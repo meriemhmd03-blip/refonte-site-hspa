@@ -41,6 +41,9 @@ class Prestation
     #[ORM\Column(length: 255)]
     private ?string $imageResultats = null;
 
+    #[ORM\Column(type: Types::TEXT)]
+    private ?string $heroDescription = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -150,6 +153,18 @@ class Prestation
     public function setImageResultats(string $imageResultats): static
     {
         $this->imageResultats = $imageResultats;
+
+        return $this;
+    }
+
+    public function getHeroDescription(): ?string
+    {
+        return $this->heroDescription;
+    }
+
+    public function setHeroDescription(string $heroDescription): static
+    {
+        $this->heroDescription = $heroDescription;
 
         return $this;
     }

@@ -18,6 +18,8 @@ class PrestationFixture extends Fixture
         $prestation->setHeroSousTitre('Soin du cuir chevelu japonais');
 
         $prestation->setHeroImage('hero-headspa.webp');
+        
+        $prestation->setHeroDescription('Relaxation profonde · Cuir chevelu purifié · Vitalité retrouvée');
 
         $prestation->setIntroduction("Découvrez le Head Spa, un rituel inspiré des traditions japonaises qui allie détente profonde, massage du cuir chevelu et soins capillaires pour une expérience de bien-être unique.");
 
