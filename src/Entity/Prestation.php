@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PrestationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -43,6 +45,17 @@ class Prestation
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $heroDescription = null;
+
+    /**
+     * @var Collection<int, Bienfait>
+     */
+    #[ORM\OneToMany(targetEntity: Bienfait::class, mappedBy: 'prestation', orphanRemoval: true)]
+    private Collection $bienfaits;
+
+    public function __construct()
+    {
+        $this->bienfaits = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -168,4 +181,39 @@ class Prestation
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Bienfait>
+     */
+    public function getBienfaits(): Collection
+    {
+        return $this->bienfaits;
+    }
+
+    public function addBienfait(Bienfait $bienfait): static
+    {
+        if (!$this->bienfaits->contains($bienfait)) {
+            $this->bienfaits->add($bienfait);
+            $bienfait->setPrestation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBienfait(Bienfait $bienfait): static
+    {
+        if ($this->bienfaits->removeElement($bienfait)) {
+            // set the owning side to null (unless already changed)
+            if ($bienfait->getPrestation() === $this) {
+                $bienfait->setPrestation(null);
+            }
+        }
+
+        return $this;
+    }
+    
+    public function __toString(): string
+{
+    return $this->nom ?? '';
+}
 }

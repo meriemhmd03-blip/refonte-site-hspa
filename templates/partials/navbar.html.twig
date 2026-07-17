@@ -1,8 +1,31 @@
 <nav>
     <ul>
-        <li><a href="{{ path('home') }}">Accueil</a></li>
-        <li><a href="{{ path('prestations') }}">Prestations</a></li>
-        <li><a href="{{ path('qui') }}">Contact</a></li>
-        <li><a href="{{ path('tarifs') }}">Tarifs</a></li>
+        <li>
+            <a href="{{ path('home') }}">Accueil</a>
+        </li>
+
+        <li class="dropdown">
+    <a href="#">Prestations ▼</a>
+
+    <ul class="dropdown-menu">
+        {% for prestation in prestations|default([]) %}
+            <li>
+                <a href="{{ path('prestation_show', {
+                    slug: prestation.slug
+                }) }}">
+                    {{ prestation.nom }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</li>
+
+        <li>
+            <a href="{{ path('qui') }}">Contact</a>
+        </li>
+
+        <li>
+            <a href="{{ path('tarifs') }}">Tarifs</a>
+        </li>
     </ul>
 </nav>

@@ -1,3 +1,200 @@
-$prestation->setHeroDescription(
-    'Relaxation profonde · Cuir chevelu purifié · Vitalité retrouvée'
-);
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ prestation.nom }} | Head Spa Lyon By F.{% endblock %}
+
+{% block body %}
+
+<!-- ========== HERO ========== -->
+
+<header class="hero">
+    <div class="hero-content">
+        <span class="hero-eyebrow">{{ prestation.heroSousTitre }}</span>
+
+        <h1>
+            {{ prestation.nom }}<br>
+            <em>Lyon</em>
+        </h1>
+
+        <p class="hero-sub">
+            {{ prestation.heroDescription }}
+        </p>
+
+        <a href="https://www.planity.com/nd-beauty-concept-69100-villeurbanne"
+           class="btn"
+           rel="noopener"
+           target="_blank">
+            Réservez un soin
+        </a>
+    </div>
+</header>
+
+<!-- ========== INTRO ========== -->
+
+<div class="intro fade">
+
+    <span class="section-label">
+        Le soin
+    </span>
+
+    <h2>
+
+        {{ prestation.nom }}
+
+    </h2>
+
+    <div class="divider"></div>
+
+    <p>
+
+        {{ prestation.introduction }}
+
+    </p>
+
+</div>
+
+<!-- ========== TECHNIQUE ========== -->
+
+<section class="section-duo fade">
+
+    <div class="section-text">
+
+        <span class="section-label">
+            La technique
+        </span>
+
+        <h2>
+
+            Comment fonctionne {{ prestation.nom }} ?
+
+        </h2>
+
+        <p>
+
+            {{ prestation.technique }}
+
+        </p>
+
+    </div>
+
+    <div class="section-image">
+
+        <img
+                loading="lazy"
+                src="{{ asset('images/' ~ prestation.imageTechnique) }}"
+                alt="{{ prestation.nom }}"
+        >
+
+    </div>
+
+</section>
+
+<!-- ========== RESULTATS ========== -->
+
+<div class="section-duo-alt fade">
+
+    <div class="duo-inner">
+
+        <div class="section-image">
+
+            <img
+                    loading="lazy"
+                    src="{{ asset('images/' ~ prestation.imageResultats) }}"
+                    alt="{{ prestation.nom }}"
+            >
+
+        </div>
+
+        <div class="section-text">
+
+            <span class="section-label">
+                Les résultats
+            </span>
+
+            <h2>
+
+                Les résultats de {{ prestation.nom }}
+
+            </h2>
+
+            <p>
+
+                {{ prestation.resultats }}
+
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- ========== BIENFAITS ========== -->
+
+<section class="bienfaits fade">
+
+    <div class="bienfaits-header">
+
+        <span class="section-label">
+            Les bienfaits
+        </span>
+
+        <h2>
+
+            Pourquoi choisir {{ prestation.nom }} ?
+
+        </h2>
+
+    </div>
+
+    <div class="bienfaits-grid">
+
+    {% for bienfait in prestation.bienfaits %}
+
+        <div class="bienfait-card">
+
+            <i class="{{ bienfait.icone }}"></i>
+
+            <h3>
+                {{ bienfait.titre }}
+            </h3>
+
+            <p>
+                {{ bienfait.description }}
+            </p>
+
+        </div>
+
+    {% endfor %}
+
+</div>
+
+</section>
+
+<!-- ========== CTA ========== -->
+
+<section class="cta fade">
+
+    <h2>
+
+        Prête à vivre l'expérience {{ prestation.nom }} ?
+
+    </h2>
+
+    <p>
+
+        Réservez votre séance dès aujourd'hui.
+
+    </p>
+
+    <a href="https://www.planity.com/nd-beauty-concept-69100-villeurbanne"
+       class="btn"
+       target="_blank">
+
+        Réservez un soin
+
+    </a>
+
+</section>
+
+{% endblock %}
+
