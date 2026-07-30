@@ -52,9 +52,16 @@ class Prestation
     #[ORM\OneToMany(targetEntity: Bienfait::class, mappedBy: 'prestation', orphanRemoval: true)]
     private Collection $bienfaits;
 
+    /**
+     * @var Collection<int, RendezVous>
+     */
+    #[ORM\OneToMany(targetEntity: RendezVous::class, mappedBy: 'prestation')]
+    private Collection $rendezVouses;
+
     public function __construct()
     {
         $this->bienfaits = new ArrayCollection();
+        $this->rendezVouses = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -216,4 +223,34 @@ class Prestation
 {
     return $this->nom ?? '';
 }
+
+    /**
+     * @return Collection<int, RendezVous>
+     */
+    public function getRendezVouses(): Collection
+    {
+        return $this->rendezVouses;
+    }
+
+    public function addRendezVouse(RendezVous $rendezVouse): static
+    {
+        if (!$this->rendezVouses->contains($rendezVouse)) {
+            $this->rendezVouses->add($rendezVouse);
+            $rendezVouse->setPrestation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRendezVouse(RendezVous $rendezVouse): static
+    {
+        if ($this->rendezVouses->removeElement($rendezVouse)) {
+            // set the owning side to null (unless already changed)
+            if ($rendezVouse->getPrestation() === $this) {
+                $rendezVouse->setPrestation(null);
+            }
+        }
+
+        return $this;
+    }
 }

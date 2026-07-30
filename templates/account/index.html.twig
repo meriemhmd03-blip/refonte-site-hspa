@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon compte{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+
+     <h1>Bonjour {{ app.user.prenom }} 👋</h1>
+
+    <p>Bienvenue dans votre espace client.</p>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    {{ form_start(form) }} <!--génère auto form method = "post"
+    mais aussi le token csrf, l'encodage, l'action du formulaire : symfony s'occupe de tout-->
+
+        {{ form_row(form.nom) }} <!-- fabrique auto le label nom , input etc..-->
+
+        {{ form_row(form.prenom) }}
+
+        {{ form_row(form.telephone) }}
+
+        <button class="btn btn-primary">
+            Enregistrer
+        </button>
+
+    {{ form_end(form) }} <!--ferme auto le form-->
+
+</div>
+
+{% endblock %}
