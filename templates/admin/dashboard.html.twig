@@ -1,0 +1,23 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+
+{% block content %}
+
+<h1>📊 Tableau de bord</h1>
+
+<p>Bienvenue dans l'administration du Head Spa.</p>
+
+<hr>
+
+<h2>Statistiques</h2>
+
+<p>
+    Nombre total de rendez-vous :
+    <strong>{{ nombreRendezVous }}</strong>
+</p>
+
+<p>
+    Rendez-vous aujourd'hui :
+    <strong>{{ nombreAujourdHui }}</strong>
+</p>
+
+{% endblock %}

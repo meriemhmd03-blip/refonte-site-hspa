@@ -5,9 +5,9 @@ namespace App\Controller\Admin;
 use App\Entity\Prestation;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-
 
 class PrestationCrudController extends AbstractCrudController
 {
@@ -17,29 +17,34 @@ class PrestationCrudController extends AbstractCrudController
     }
 
     public function configureFields(string $pageName): iterable
-{
-    return [
+    {
+        return [
 
-        IdField::new('id')
-            ->hideOnForm(),
+            IdField::new('id')
+                ->hideOnForm(),
 
-        TextField::new('nom'),
+            TextField::new('nom'),
 
-        TextField::new('slug'),
+            TextField::new('slug'),
 
-        TextField::new('imageTechnique'),
+            IntegerField::new('duree')
+                ->setLabel('Durée (minutes)'),
 
-        TextField::new('imageResultats'),
+            TextField::new('heroImage'),
 
-        TextEditorField::new('introduction'),
+            TextField::new('imageTechnique'),
 
-        TextEditorField::new('HeroDescription'),
-        TextField::new('HeroImage'),
-        
-        TextEditorField::new('HeroSousTitre'),
-        TextEditorField::new('Technique'),
-        TextEditorField::new('Resultats'),
+            TextField::new('imageResultats'),
 
-    ];
-}
+            TextEditorField::new('heroSousTitre'),
+
+            TextEditorField::new('heroDescription'),
+
+            TextEditorField::new('introduction'),
+
+            TextEditorField::new('technique'),
+
+            TextEditorField::new('resultats'),
+        ];
+    }
 }

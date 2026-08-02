@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Form\UserProfileType;
+use App\Repository\RendezVousRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -12,34 +13,41 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class AccountController extends AbstractController
 {
-#[Route('/account', name: 'app_account')]
-#[IsGranted('ROLE_USER')]
-public function index(
-    Request $request,
-    EntityManagerInterface $entityManager
-): Response
-{
-    /** @var \App\Entity\User $user */
-    $user = $this->getUser(); //symfony récupère l'utilisateur actuellement connecté
+    #[Route('/account', name: 'app_account')]
+    #[IsGranted('ROLE_USER')]
+    public function index(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        RendezVousRepository $rendezVousRepository
+    ): Response
+    {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
 
-    $form = $this->createForm(UserProfileType::class, $user); //symfony crée automatiquement un formulaire et remplit deja les valeurs présentes dans la base
+        $form = $this->createForm(UserProfileType::class, $user);
 
-    $form->handleRequest($request); //regarde si le form a été envoyé
+        $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) { //btn enregistrer a été cliqué ? + les données sont elles valides ?
+        if ($form->isSubmitted() && $form->isValid()) {
 
-        $entityManager->flush(); //sauvegarde les modifs // par de persist car l'utilisateur existe déjà
+            $entityManager->flush();
 
-        $this->addFlash(
-            'success',
-            'Vos informations ont été mises à jour avec succès.'
+            $this->addFlash(
+                'success',
+                'Vos informations ont été mises à jour avec succès.'
+            );
+
+            return $this->redirectToRoute('app_account');
+        }
+
+        $rendezVous = $rendezVousRepository->findBy(
+            ['user' => $user],
+            ['dateHeure' => 'ASC']
         );
 
-        return $this->redirectToRoute('app_account');
+        return $this->render('account/index.html.twig', [
+            'form' => $form->createView(),
+            'rendezVous' => $rendezVous,
+        ]);
     }
-
-    return $this->render('account/index.html.twig', [
-        'form' => $form->createView(),
-    ]);
-}
 }

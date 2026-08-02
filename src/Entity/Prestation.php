@@ -46,6 +46,9 @@ class Prestation
     #[ORM\Column(type: Types::TEXT)]
     private ?string $heroDescription = null;
 
+    #[ORM\Column]
+    private ?int $duree = null;
+
     /**
      * @var Collection<int, Bienfait>
      */
@@ -189,6 +192,18 @@ class Prestation
         return $this;
     }
 
+    public function getDuree(): ?int
+    {
+        return $this->duree;
+    }
+
+    public function setDuree(int $duree): static
+    {
+        $this->duree = $duree;
+
+        return $this;
+    }
+
     /**
      * @return Collection<int, Bienfait>
      */
@@ -210,7 +225,6 @@ class Prestation
     public function removeBienfait(Bienfait $bienfait): static
     {
         if ($this->bienfaits->removeElement($bienfait)) {
-            // set the owning side to null (unless already changed)
             if ($bienfait->getPrestation() === $this) {
                 $bienfait->setPrestation(null);
             }
@@ -218,11 +232,11 @@ class Prestation
 
         return $this;
     }
-    
+
     public function __toString(): string
-{
-    return $this->nom ?? '';
-}
+    {
+        return $this->nom ?? '';
+    }
 
     /**
      * @return Collection<int, RendezVous>
@@ -245,7 +259,6 @@ class Prestation
     public function removeRendezVouse(RendezVous $rendezVouse): static
     {
         if ($this->rendezVouses->removeElement($rendezVouse)) {
-            // set the owning side to null (unless already changed)
             if ($rendezVouse->getPrestation() === $this) {
                 $rendezVouse->setPrestation(null);
             }
@@ -253,4 +266,6 @@ class Prestation
 
         return $this;
     }
+    
+   
 }

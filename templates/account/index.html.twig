@@ -6,7 +6,7 @@
 
 <div class="container mt-5">
 
-     <h1>Bonjour {{ app.user.prenom }} 👋</h1>
+    <h1>Bonjour {{ app.user.prenom }} 👋</h1>
 
     <p>Bienvenue dans votre espace client.</p>
 
@@ -16,10 +16,9 @@
         </div>
     {% endfor %}
 
-    {{ form_start(form) }} <!--génère auto form method = "post"
-    mais aussi le token csrf, l'encodage, l'action du formulaire : symfony s'occupe de tout-->
+    {{ form_start(form) }}
 
-        {{ form_row(form.nom) }} <!-- fabrique auto le label nom , input etc..-->
+        {{ form_row(form.nom) }}
 
         {{ form_row(form.prenom) }}
 
@@ -29,7 +28,72 @@
             Enregistrer
         </button>
 
-    {{ form_end(form) }} <!--ferme auto le form-->
+    {{ form_end(form) }}
+
+    <hr class="my-5">
+
+    <h2>Mes rendez-vous</h2>
+
+    {% if rendezVous is empty %}
+
+        <div class="alert alert-info mt-3">
+            Vous n'avez encore aucun rendez-vous.
+        </div>
+
+    {% else %}
+
+        <table class="table table-striped mt-4">
+
+            <thead>
+
+                <tr>
+                    <th>Prestation</th>
+                    <th>Date</th>
+                    <th>Statut</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for rdv in rendezVous %}
+
+                <tr>
+
+                    <td>{{ rdv.prestation.nom }}</td>
+
+                    <td>
+                        {{ rdv.dateHeure|date('d/m/Y à H:i') }}
+                    </td>
+
+                    <td>
+
+    {{ rdv.statut }}
+
+    {% if rdv.statut != 'ANNULE' %}
+
+        <br><br>
+
+        <a
+            href="{{ path('app_reservation_cancel', {id: rdv.id}) }}"
+            class="btn btn-danger btn-sm"
+        >
+            Annuler
+        </a>
+
+    {% endif %}
+
+</td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    {% endif %}
 
 </div>
 

@@ -6,9 +6,6 @@ use App\Entity\RendezVous;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-/**
- * @extends ServiceEntityRepository<RendezVous>
- */
 class RendezVousRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -16,28 +13,42 @@ class RendezVousRepository extends ServiceEntityRepository
         parent::__construct($registry, RendezVous::class);
     }
 
-    //    /**
-    //     * @return RendezVous[] Returns an array of RendezVous objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('r.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * Retourne tous les rendez-vous d'une journée.
+     */
+    public function findByDay(\DateTimeImmutable $date): array
+    {
+        $debutJournee = $date->setTime(0, 0, 0);
+        $finJournee = $date->setTime(23, 59, 59);
 
-    //    public function findOneBySomeField($value): ?RendezVous
-    //    {
-    //        return $this->createQueryBuilder('r')
-    //            ->andWhere('r.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+        return $this->createQueryBuilder('r')
+            ->where('r.dateHeure BETWEEN :debut AND :fin')
+            ->setParameter('debut', $debutJournee)
+            ->setParameter('fin', $finJournee)
+            ->orderBy('r.dateHeure', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function countAll(): int
+{
+    return (int) $this->createQueryBuilder('r')
+        ->select('COUNT(r.id)')
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+public function countToday(): int
+{
+    $debut = new \DateTimeImmutable('today');
+    $fin = new \DateTimeImmutable('tomorrow');
+
+    return (int) $this->createQueryBuilder('r')
+        ->select('COUNT(r.id)')
+        ->where('r.dateHeure >= :debut')
+        ->andWhere('r.dateHeure < :fin')
+        ->setParameter('debut', $debut)
+        ->setParameter('fin', $fin)
+        ->getQuery()
+        ->getSingleScalarResult();
+}
 }
