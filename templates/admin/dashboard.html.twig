@@ -20,4 +20,80 @@
     <strong>{{ nombreAujourdHui }}</strong>
 </p>
 
+<p>
+    🟡 En attente :
+    <strong>{{ nombreEnAttente }}</strong>
+</p>
+
+<p>
+    🟢 Confirmés :
+    <strong>{{ nombreConfirmes }}</strong>
+</p>
+
+<p>
+    🔴 Annulés :
+    <strong>{{ nombreAnnules }}</strong>
+</p>
+
+<hr>
+
+<h2>📅 Prochains rendez-vous</h2>
+
+{% if prochainsRendezVous is empty %}
+
+    <p>Aucun rendez-vous à venir.</p>
+
+{% else %}
+
+    <table class="table">
+
+        <thead>
+
+            <tr>
+
+                <th>Date</th>
+
+                <th>Client</th>
+
+                <th>Prestation</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+        {% for rendezVous in prochainsRendezVous %}
+
+            <tr>
+
+                <td>
+
+                    {{ rendezVous.dateHeure|date('d/m/Y H:i') }}
+
+                </td>
+
+                <td>
+
+                    {{ rendezVous.user.prenom }}
+                    {{ rendezVous.user.nom }}
+
+                </td>
+
+                <td>
+
+                    {{ rendezVous.prestation.nom }}
+
+                </td>
+
+            </tr>
+
+        {% endfor %}
+
+        </tbody>
+
+    </table>
+
+{% endif %}
+
 {% endblock %}

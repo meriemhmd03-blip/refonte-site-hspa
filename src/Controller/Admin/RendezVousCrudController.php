@@ -44,12 +44,41 @@ class RendezVousCrudController extends AbstractCrudController
         ];
     }
 
-    public function configureActions(Actions $actions): Actions
-    {
-        return $actions
-            ->disable(Action::NEW, Action::DELETE);
-    }
+public function configureActions(Actions $actions): Actions
+{
+    $confirmer = Action::new('confirmer', 'Confirmer')
+    ->setIcon('fa fa-check')
+    ->displayIf(function (RendezVous $rendezVous) {
+        return $rendezVous->getStatut() !== 'CONFIRME';
+    })
+    ->linkToRoute(
+        'app_admin_rendez_vous_confirmer',
+        function (RendezVous $rendezVous) {
+            return [
+                'id' => $rendezVous->getId(),
+            ];
+        }
+    );
 
+    $refuser = Action::new('refuser', 'Refuser')
+    ->setIcon('fa fa-times')
+    ->displayIf(function (RendezVous $rendezVous) {
+        return $rendezVous->getStatut() !== 'REFUSE';
+    })
+    ->linkToRoute(
+        'app_admin_rendez_vous_refuser',
+        function (RendezVous $rendezVous) {
+            return [
+                'id' => $rendezVous->getId(),
+            ];
+        }
+    );
+
+    return $actions
+        ->disable(Action::NEW, Action::DELETE)
+        ->add(Crud::PAGE_INDEX, $confirmer)
+        ->add(Crud::PAGE_INDEX, $refuser);
+}
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
@@ -74,4 +103,5 @@ class RendezVousCrudController extends AbstractCrudController
                     ])
             );
     }
+    
 }

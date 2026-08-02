@@ -51,4 +51,25 @@ public function countToday(): int
         ->getQuery()
         ->getSingleScalarResult();
 }
+
+public function countByStatus(string $statut): int
+{
+    return (int) $this->createQueryBuilder('r')
+        ->select('COUNT(r.id)')
+        ->where('r.statut = :statut')
+        ->setParameter('statut', $statut)
+        ->getQuery()
+        ->getSingleScalarResult();
+}
+
+public function findNextAppointments(int $limit = 5): array
+{
+    return $this->createQueryBuilder('r')
+        ->where('r.dateHeure >= :now')
+        ->setParameter('now', new \DateTimeImmutable())
+        ->orderBy('r.dateHeure', 'ASC')
+        ->setMaxResults($limit)
+        ->getQuery()
+        ->getResult();
+}
 }

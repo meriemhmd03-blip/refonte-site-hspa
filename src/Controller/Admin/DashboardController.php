@@ -21,15 +21,28 @@ class DashboardController extends AbstractDashboardController
     }
 
     public function index(): Response
-    {
-        $nombreRendezVous = $this->rendezVousRepository->countAll();
-        $nombreAujourdHui = $this->rendezVousRepository->countToday();
+{
+    $nombreRendezVous = $this->rendezVousRepository->countAll();
 
-        return $this->render('admin/dashboard.html.twig', [
-            'nombreRendezVous' => $nombreRendezVous,
-            'nombreAujourdHui' => $nombreAujourdHui,
-        ]);
-    }
+    $nombreAujourdHui = $this->rendezVousRepository->countToday();
+
+    $nombreEnAttente = $this->rendezVousRepository->countByStatus('EN_ATTENTE');
+
+    $nombreConfirmes = $this->rendezVousRepository->countByStatus('CONFIRME');
+
+    $nombreAnnules = $this->rendezVousRepository->countByStatus('ANNULE');
+
+    $prochainsRendezVous = $this->rendezVousRepository->findNextAppointments();
+
+    return $this->render('admin/dashboard.html.twig', [
+        'nombreRendezVous' => $nombreRendezVous,
+        'nombreAujourdHui' => $nombreAujourdHui,
+        'nombreEnAttente' => $nombreEnAttente,
+        'nombreConfirmes' => $nombreConfirmes,
+        'nombreAnnules' => $nombreAnnules,
+        'prochainsRendezVous' => $prochainsRendezVous,
+    ]);
+}
 
     public function configureDashboard(): Dashboard
     {
