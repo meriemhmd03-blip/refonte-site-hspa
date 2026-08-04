@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon espace{% endblock %}
+
+{% block body %}
+
+<div class="container mt-4">
+
+    <h1>👤 Mon espace</h1>
+
+    <hr>
+
+    <h2>Mes informations</h2>
+
+    <p>
+        <strong>Nom :</strong>
+        {{ app.user.nom }}
+    </p>
+
+    <p>
+        <strong>Prénom :</strong>
+        {{ app.user.prenom }}
+    </p>
+
+    <p>
+        <strong>Email :</strong>
+        {{ app.user.email }}
+    </p>
+
+    <p>
+        <strong>Téléphone :</strong>
+        {{ app.user.telephone }}
+    </p>
+
+    <a href="{{ path('app_account_edit') }}"
+       class="btn btn-success mb-4">
+        Modifier mes informations
+    </a>
+
+    <hr>
+
+    <h2>📅 Mes rendez-vous</h2>
+
+    {% if rendezVous is empty %}
+
+        <p>Vous n'avez aucun rendez-vous.</p>
+
+    {% else %}
+
+        <table class="table table-striped">
+
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Heure</th>
+                    <th>Prestation</th>
+                    <th>Statut</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+            {% for rdv in rendezVous %}
+
+                <tr>
+
+                    <td>{{ rdv.dateHeure|date('d/m/Y') }}</td>
+
+                    <td>{{ rdv.dateHeure|date('H:i') }}</td>
+
+                    <td>{{ rdv.prestation.nom }}</td>
+
+                    <td>
+
+                        {% if rdv.statut == 'CONFIRME' %}
+                            🟢 Confirmé
+                        {% elseif rdv.statut == 'EN_ATTENTE' %}
+                            🟡 En attente
+                        {% elseif rdv.statut == 'REFUSE' %}
+                            🔴 Refusé
+                        {% else %}
+                            ⚫ Annulé
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {% if rdv.statut == 'EN_ATTENTE' %}
+                            <a href="{{ path('app_annuler_rendez_vous', {id: rdv.id}) }}"
+                               class="btn btn-danger btn-sm"
+                               onclick="return confirm('Voulez-vous vraiment annuler ce rendez-vous ?');">
+                                Annuler
+                            </a>
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

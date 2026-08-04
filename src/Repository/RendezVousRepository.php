@@ -72,4 +72,43 @@ public function findNextAppointments(int $limit = 5): array
         ->getQuery()
         ->getResult();
 }
+
+public function findTodayAppointments(): array
+{
+    $debutJour = new \DateTimeImmutable('today');
+    $finJour = new \DateTimeImmutable('tomorrow');
+
+    return $this->createQueryBuilder('r')
+        ->where('r.dateHeure >= :debut')
+        ->andWhere('r.dateHeure < :fin')
+        ->setParameter('debut', $debutJour)
+        ->setParameter('fin', $finJour)
+        ->orderBy('r.dateHeure', 'ASC')
+        ->getQuery()
+        ->getResult();
+}
+
+public function findThisWeekAppointments(): array
+{
+    $debut = new \DateTimeImmutable('monday this week');
+    $fin = new \DateTimeImmutable('monday next week');
+
+    return $this->createQueryBuilder('r')
+        ->where('r.dateHeure >= :debut')
+        ->andWhere('r.dateHeure < :fin')
+        ->setParameter('debut', $debut)
+        ->setParameter('fin', $fin)
+        ->orderBy('r.dateHeure', 'ASC')
+        ->getQuery()
+        ->getResult();
+}
+public function findByUser($user): array
+{
+    return $this->createQueryBuilder('r')
+        ->where('r.user = :user')
+        ->setParameter('user', $user)
+        ->orderBy('r.dateHeure', 'DESC')
+        ->getQuery()
+        ->getResult();
+}
 }

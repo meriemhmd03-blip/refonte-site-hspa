@@ -15,6 +15,16 @@ use App\Service\ReservationService;
 
 final class ReservationController extends AbstractController
 {
+    #[Route('/reservation', name: 'app_reservation_choix')]
+#[IsGranted('ROLE_USER')]
+public function choix(
+    \App\Repository\PrestationRepository $prestationRepository
+): Response
+{
+    return $this->render('reservation/choix.html.twig', [
+        'prestations' => $prestationRepository->findAll(),
+    ]);
+}
     #[Route('/reservation/{id}', name: 'app_reservation')]
     #[IsGranted('ROLE_USER')]
     public function index(

@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Réserver un soin{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+
+    <h1 class="text-center mb-5">
+        🌿 Choisissez votre soin
+    </h1>
+
+    <div class="row">
+
+        {% for prestation in prestations %}
+
+            <div class="col-md-4 mb-4">
+
+                <div class="card h-100">
+
+                    <div class="card-body text-center">
+
+                        <h3>{{ prestation.nom }}</h3>
+
+                        <p>Durée : {{ prestation.duree }} min</p>
+
+                        <a href="{{ path('app_reservation', { id: prestation.id }) }}"
+                           class="btn btn-success">
+
+                            Choisir ce soin
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+{% endblock %}

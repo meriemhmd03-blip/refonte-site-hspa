@@ -19,12 +19,10 @@
             {{ prestation.heroDescription }}
         </p>
 
-        <a href="https://www.planity.com/nd-beauty-concept-69100-villeurbanne"
-           class="btn"
-           rel="noopener"
-           target="_blank">
-            Réservez un soin
-        </a>
+       <a href="{{ path('app_reservation', { id: prestation.id }) }}"
+   class="btn">
+    Réserver un soin
+</a>
     </div>
 </header>
 
@@ -186,13 +184,12 @@
 
     </p>
 
-    <a href="https://www.planity.com/nd-beauty-concept-69100-villeurbanne"
-       class="btn"
-       target="_blank">
+    <a href="{{ path('app_reservation', { id: prestation.id }) }}"
+   class="btn">
 
-        Réservez un soin
+    Réserver un soin
 
-    </a>
+</a>
 
 </section>
 

@@ -11,7 +11,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
+#[IsGranted('ROLE_ADMIN')]
 #[AdminDashboard(routePath: '/admin', routeName: 'admin')]
 class DashboardController extends AbstractDashboardController
 {
@@ -34,6 +36,8 @@ class DashboardController extends AbstractDashboardController
 
     $prochainsRendezVous = $this->rendezVousRepository->findNextAppointments();
 
+    $rendezVousAujourdHui = $this -> rendezVousRepository->findTodayAppointments();
+
     return $this->render('admin/dashboard.html.twig', [
         'nombreRendezVous' => $nombreRendezVous,
         'nombreAujourdHui' => $nombreAujourdHui,
@@ -41,6 +45,8 @@ class DashboardController extends AbstractDashboardController
         'nombreConfirmes' => $nombreConfirmes,
         'nombreAnnules' => $nombreAnnules,
         'prochainsRendezVous' => $prochainsRendezVous,
+        'rendezVousAujourdHui' => $rendezVousAujourdHui,
+        
     ]);
 }
 
@@ -71,5 +77,10 @@ class DashboardController extends AbstractDashboardController
             'Rendez-vous',
             'fa fa-calendar'
         );
+        yield MenuItem::linkToRoute(
+    'Planning',
+    'fa fa-calendar-week',
+    'app_planning'
+);
     }
 }
