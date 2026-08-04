@@ -17,6 +17,7 @@ class MailerService
 
 public function sendConfirmationEmail(RendezVous $rendezVous): void
 {
+
     $email = (new Email())
         ->from('contact@headspa.fr')
         ->to($rendezVous->getUser()->getEmail())

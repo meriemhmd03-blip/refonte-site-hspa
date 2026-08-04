@@ -2,29 +2,27 @@
 
 namespace App\Controller;
 
-use App\Form\UserProfileType;
-use App\Repository\RendezVousRepository;
+use App\Form\AccountType;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
-final class AccountController extends AbstractController
+class AccountController extends AbstractController
 {
-    #[Route('/account', name: 'app_account')]
+    #[Route('/account/edit', name: 'app_account_edit')]
     #[IsGranted('ROLE_USER')]
-    public function index(
+    public function edit(
         Request $request,
-        EntityManagerInterface $entityManager,
-        RendezVousRepository $rendezVousRepository
+        EntityManagerInterface $entityManager
     ): Response
     {
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
 
-        $form = $this->createForm(UserProfileType::class, $user);
+        $form = $this->createForm(AccountType::class, $user);
 
         $form->handleRequest($request);
 
@@ -34,20 +32,14 @@ final class AccountController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Vos informations ont été mises à jour avec succès.'
+                'Vos informations ont été mises à jour.'
             );
 
-            return $this->redirectToRoute('app_account');
+            return $this->redirectToRoute('app_mes_rendez_vous');
         }
 
-        $rendezVous = $rendezVousRepository->findBy(
-            ['user' => $user],
-            ['dateHeure' => 'ASC']
-        );
-
-        return $this->render('account/index.html.twig', [
+        return $this->render('account/edit.html.twig', [
             'form' => $form->createView(),
-            'rendezVous' => $rendezVous,
         ]);
     }
 }

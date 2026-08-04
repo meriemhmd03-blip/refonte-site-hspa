@@ -106,7 +106,7 @@ public function choix(
                 'Votre rendez-vous a bien été enregistré.'
             );
 
-            return $this->redirectToRoute('app_account');
+            return $this->redirectToRoute('app_mes_rendez_vous');
         }
 
         return $this->render('reservation/index.html.twig', [
@@ -138,6 +138,6 @@ public function cancel(
         'Votre rendez-vous a été annulé.'
     );
 
-    return $this->redirectToRoute('app_account');
+    return $this->redirectToRoute('app_mes_rendez_vous');
 }
 }

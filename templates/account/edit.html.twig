@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mes informations{% endblock %}
+
+{% block body %}
+
+<div class="container mt-5">
+
+    <h1 class="mb-4">
+        👤 Modifier mes informations
+    </h1>
+
+    {{ form_start(form) }}
+
+        {{ form_row(form.nom) }}
+
+        {{ form_row(form.prenom) }}
+
+        {{ form_row(form.telephone) }}
+
+        {{ form_row(form.email) }}
+
+        <button class="btn btn-success mt-3">
+            Enregistrer
+        </button>
+
+    {{ form_end(form) }}
+
+    <a href="{{ path('app_mes_rendez_vous') }}"
+       class="btn btn-secondary mt-3">
+        Retour à mon espace
+    </a>
+
+</div>
+
+{% endblock %}
