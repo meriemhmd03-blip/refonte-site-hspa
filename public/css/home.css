@@ -1,0 +1,474 @@
+/* ================= HERO ================= */
+
+.hero{
+
+    position:relative;
+
+    height:100vh;
+
+    background:url("../images/hero.jpg") center center/cover no-repeat;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+.hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(25,22,18,.45);
+
+}
+
+.hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:900px;
+
+    text-align:center;
+
+    color:white;
+
+    padding:20px;
+
+}
+
+.hero-subtitle{
+
+    color:white;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    font-size:14px;
+
+}
+
+.hero h1{
+
+    font-family:"Cormorant Garamond",serif;
+
+    font-size:95px;
+
+    font-weight:400;
+
+    line-height:1;
+
+    margin:35px 0;
+
+}
+
+.hero h1 span{
+
+    color:#D7BD87;
+
+}
+
+.hero p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:white;
+
+    font-size:22px;
+
+    line-height:1.8;
+
+    opacity:.95;
+
+}
+
+.hero-btn{
+
+    display:inline-block;
+
+    margin-top:60px;
+
+    padding:20px 55px;
+
+    background:#7A8572;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:50px;
+
+    transition:.35s;
+
+}
+
+.hero-btn:hover{
+
+    background:#65705E;
+
+    transform:translateY(-3px);
+
+}
+
+
+.hero::after{
+
+    content:"";
+
+    position:absolute;
+
+    bottom:0;
+
+    left:0;
+
+    width:100%;
+
+    height:220px;
+
+    background:linear-gradient(to top,#F8F6F2,transparent);
+
+}
+
+/* ================= PHILOSOPHIE ================= */
+
+.philosophie{
+
+    background:#F8F6F2;
+
+    padding:140px 0;
+
+}
+
+.philosophie-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:90px;
+
+    align-items:center;
+
+}
+
+.philosophie-image img{
+
+    width:100%;
+
+    border-radius:25px;
+
+    display:block;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+
+}
+
+.philosophie-content h2{
+
+    margin:20px 0 35px;
+
+    font-size:58px;
+
+    line-height:1.1;
+
+}
+
+.philosophie-content h2 em{
+
+    color:#C4A66A;
+
+    font-style:italic;
+
+}
+
+.philosophie-content p{
+
+    margin-bottom:25px;
+
+    font-size:18px;
+
+    line-height:1.9;
+
+    color:#555;
+
+}
+
+.philosophie-content .btn{
+
+    margin-top:20px;
+
+}
+
+/* ================= PRESTATIONS ================= */
+
+.prestations-home{
+
+    padding:140px 0;
+
+    background:white;
+
+}
+
+.prestations-home h2{
+
+    text-align:center;
+
+    margin:20px 0 70px;
+
+}
+
+.prestations-home .section-label{
+
+    display:block;
+
+    text-align:center;
+
+}
+
+.prestations-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:40px;
+
+}
+
+.prestation-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    transition:.4s;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+.prestation-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.prestation-card img{
+
+    width:100%;
+
+    height:340px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+.card-content{
+
+    padding:35px;
+
+}
+
+.card-content h3{
+
+    font-size:34px;
+
+    margin-bottom:15px;
+
+}
+
+.card-content p{
+
+    color:#888;
+
+    margin-bottom:25px;
+
+}
+
+.card-content a{
+
+    color:#7A8572;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+/* ================= WHY ================= */
+
+.why{
+
+    background:#F8F6F2;
+
+    padding:140px 0;
+
+}
+
+.why .section-label{
+
+    display:block;
+
+    text-align:center;
+
+}
+
+.why h2{
+
+    text-align:center;
+
+    margin:20px 0 70px;
+
+}
+
+.why-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+}
+
+.why-card{
+
+    background:white;
+
+    padding:45px 35px;
+
+    border-radius:24px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.why-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.why-icon{
+
+    font-size:42px;
+
+    margin-bottom:20px;
+
+}
+
+.why-card h3{
+
+    margin-bottom:18px;
+
+    font-size:24px;
+
+}
+
+.why-card p{
+
+    color:#666;
+
+    line-height:1.8;
+
+}
+
+/* ================= AVIS ================= */
+
+.avis{
+
+    padding:140px 0;
+
+    background:white;
+
+}
+
+.avis .section-label{
+
+    display:block;
+
+    text-align:center;
+
+}
+
+.avis h2{
+
+    text-align:center;
+
+    margin:20px 0 70px;
+
+}
+
+.avis-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+}
+
+.avis-card{
+
+    background:#F8F6F2;
+
+    border-radius:25px;
+
+    padding:45px;
+
+    transition:.35s;
+
+}
+
+.avis-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.stars{
+
+    color:#C4A66A;
+
+    font-size:22px;
+
+    margin-bottom:20px;
+
+    letter-spacing:5px;
+
+}
+
+.avis-card p{
+
+    line-height:1.9;
+
+    color:#555;
+
+    margin-bottom:30px;
+
+}
+
+.avis-card strong{
+
+    color:#222;
+
+}

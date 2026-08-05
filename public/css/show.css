@@ -1,0 +1,284 @@
+/* ================= HERO PRESTATION ================= */
+
+.hero-prestation{
+
+    position:relative;
+
+    height:90vh;
+
+    background:url("../images/hero.jpg") center center/cover no-repeat;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    overflow:hidden;
+
+}
+
+.hero-prestation .hero-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(
+        rgba(20,20,20,.55),
+        rgba(20,20,20,.35)
+    );
+
+}
+
+.hero-prestation .hero-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:850px;
+
+    text-align:center;
+
+    color:white;
+
+    padding:20px;
+
+}
+
+.hero-eyebrow{
+
+    display:block;
+
+    color:#C8A977;
+
+    letter-spacing:6px;
+
+    text-transform:uppercase;
+
+    font-size:13px;
+
+    margin-bottom:25px;
+
+}
+
+.hero-prestation h1{
+
+    color:white;
+
+    font-size:90px;
+
+    margin-bottom:25px;
+
+}
+
+.hero-prestation h1 em{
+
+    color:#C8A977;
+
+    font-style:italic;
+
+}
+
+.hero-sub{
+
+    max-width:700px;
+
+    margin:auto;
+
+    color:white;
+
+    font-size:20px;
+
+    line-height:1.9;
+
+}
+/* ================= INTRO ================= */
+
+.intro{
+
+    text-align:center;
+
+    padding:140px 0;
+
+}
+
+.intro .divider{
+
+    width:90px;
+
+    height:2px;
+
+    background:#C8A977;
+
+    margin:35px auto;
+
+}
+
+.intro p{
+
+    max-width:850px;
+
+    margin:auto;
+
+}
+
+/* ================= DUO ================= */
+
+.section-duo,
+.section-duo-alt{
+
+    padding:140px 0;
+
+}
+
+.duo-inner{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:80px;
+
+    align-items:center;
+
+}
+
+.section-image img{
+
+    width:100%;
+
+    border-radius:28px;
+
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+
+    transition:.5s;
+
+}
+
+.section-image img:hover{
+
+    transform:scale(1.03);
+
+}
+
+/* ================= BIENFAITS ================= */
+
+.bienfaits{
+
+    background:#F8F6F2;
+
+}
+
+.bienfaits-header{
+
+    text-align:center;
+
+    margin-bottom:70px;
+
+}
+
+.bienfaits-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+}
+
+.bienfait-card{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:45px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.bienfait-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.bienfait-card i{
+
+    font-size:42px;
+
+    color:#C8A977;
+
+    margin-bottom:25px;
+
+    display:block;
+
+}
+
+.bienfait-card h3{
+
+    margin-bottom:20px;
+
+}
+
+/* ================= CTA ================= */
+
+.cta-luxe{
+
+    position:relative;
+
+    background:url("../images/hero.jpg") center/cover;
+
+    padding:180px 0;
+
+    text-align:center;
+
+    overflow:hidden;
+
+}
+
+.cta-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(20,20,20,.55);
+
+}
+
+.cta-content{
+
+    position:relative;
+
+    z-index:2;
+
+    max-width:800px;
+
+    margin:auto;
+
+}
+
+.cta-content h2{
+
+    color:white;
+
+    margin:25px 0;
+
+}
+
+.cta-content p{
+
+    color:white;
+
+    margin-bottom:40px;
+
+}

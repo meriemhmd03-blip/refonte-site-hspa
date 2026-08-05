@@ -1,0 +1,316 @@
+/* ================= ACCOUNT ================= */
+
+.account{
+
+    padding:140px 0;
+
+    background:#F9F7F3;
+
+}
+
+.account-header{
+
+    text-align:center;
+
+    margin-bottom:80px;
+
+}
+
+.account-header h1{
+
+    margin:20px 0;
+
+}
+
+.account-header p{
+
+    max-width:650px;
+
+    margin:auto;
+
+}
+
+/* ================= INFOS ================= */
+
+.account-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:30px;
+
+    margin-bottom:50px;
+
+}
+
+.info-card{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:35px;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.info-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.info-card h3{
+
+    margin-bottom:12px;
+
+    font-size:24px;
+
+}
+
+.info-card p{
+
+    margin:0;
+
+    color:#666;
+
+}
+
+/* ================= ACTION ================= */
+
+.account-actions{
+
+    text-align:center;
+
+    margin-bottom:100px;
+
+}
+
+/* ================= RDV ================= */
+
+.rdv-title{
+
+    text-align:center;
+
+    margin-bottom:60px;
+
+}
+
+.rdv-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+
+    gap:35px;
+
+}
+
+.rdv-card{
+
+    background:white;
+
+    border-radius:25px;
+
+    padding:35px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.rdv-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.rdv-card h3{
+
+    margin-bottom:20px;
+
+}
+
+.rdv-card p{
+
+    margin-bottom:12px;
+
+}
+
+/* ================= BADGES ================= */
+
+.badge{
+
+    display:inline-block;
+
+    margin:20px 0;
+
+    padding:8px 18px;
+
+    border-radius:40px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.success{
+
+    background:#DDF6E4;
+
+    color:#2F8F57;
+
+}
+
+.warning{
+
+    background:#FFF5D6;
+
+    color:#A97A00;
+
+}
+
+.danger{
+
+    background:#F9DCDC;
+
+    color:#C0392B;
+
+}
+
+.cancel{
+
+    background:#ECECEC;
+
+    color:#666;
+
+}
+
+/* ================= EMPTY ================= */
+
+.empty-card{
+
+    background:white;
+
+    padding:60px;
+
+    border-radius:25px;
+
+    text-align:center;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+
+}
+
+.empty-card h3{
+
+    margin-bottom:20px;
+
+}
+
+.empty-card p{
+
+    margin-bottom:30px;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:1000px){
+
+    .account-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .account-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+/* ================= STATS ================= */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:25px;
+
+    margin:50px 0 60px;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:0 15px 35px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.stat-card h3{
+
+    font-size:48px;
+
+    color:var(--gold);
+
+    margin-bottom:10px;
+
+}
+
+.stat-card span{
+
+    color:#666;
+
+    font-size:15px;
+
+}
+
+@media(max-width:1000px){
+
+    .stats-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:700px){
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

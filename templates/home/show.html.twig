@@ -6,9 +6,15 @@
 
 <!-- ========== HERO ========== -->
 
-<header class="hero">
+<header class="hero hero-prestation">
+
+    <div class="hero-overlay"></div>
+
     <div class="hero-content">
-        <span class="hero-eyebrow">{{ prestation.heroSousTitre }}</span>
+
+        <span class="hero-eyebrow">
+            {{ prestation.heroSousTitre }}
+        </span>
 
         <h1>
             {{ prestation.nom }}<br>
@@ -19,68 +25,70 @@
             {{ prestation.heroDescription }}
         </p>
 
-       <a href="{{ path('app_reservation', { id: prestation.id }) }}"
-   class="btn">
-    Réserver un soin
-</a>
+        <a href="{{ path('app_reservation', { id: prestation.id }) }}"
+           class="btn">
+            Réserver un soin
+        </a>
+
     </div>
+
 </header>
 
 <!-- ========== INTRO ========== -->
 
-<div class="intro fade">
+<section class="intro fade">
 
-    <span class="section-label">
-        Le soin
-    </span>
+    <div class="container">
 
-    <h2>
+        <span class="section-label">
+            Le soin
+        </span>
 
-        {{ prestation.nom }}
+        <h2>
+            {{ prestation.nom }}
+        </h2>
 
-    </h2>
+        <div class="divider"></div>
 
-    <div class="divider"></div>
+        <p>
+            {{ prestation.introduction }}
+        </p>
 
-    <p>
+    </div>
 
-        {{ prestation.introduction }}
-
-    </p>
-
-</div>
+</section>
 
 <!-- ========== TECHNIQUE ========== -->
 
 <section class="section-duo fade">
 
-    <div class="section-text">
+    <div class="container duo-inner">
 
-        <span class="section-label">
-            La technique
-        </span>
+        <div class="section-text">
 
-        <h2>
+            <span class="section-label">
+                La technique
+            </span>
 
-            Comment fonctionne {{ prestation.nom }} ?
+            <h2>
+                Comment fonctionne {{ prestation.nom }} ?
+            </h2>
 
-        </h2>
+            <p>
+                {{ prestation.technique }}
+            </p>
 
-        <p>
+        </div>
 
-            {{ prestation.technique }}
+        <div class="section-image">
 
-        </p>
-
-    </div>
-
-    <div class="section-image">
-
-        <img
+            <img
                 loading="lazy"
                 src="{{ asset('images/' ~ prestation.imageTechnique) }}"
                 alt="{{ prestation.nom }}"
-        >
+            >
+
+        </div>
 
     </div>
 
@@ -88,16 +96,16 @@
 
 <!-- ========== RESULTATS ========== -->
 
-<div class="section-duo-alt fade">
+<section class="section-duo-alt fade">
 
-    <div class="duo-inner">
+    <div class="container duo-inner">
 
         <div class="section-image">
 
             <img
-                    loading="lazy"
-                    src="{{ asset('images/' ~ prestation.imageResultats) }}"
-                    alt="{{ prestation.nom }}"
+                loading="lazy"
+                src="{{ asset('images/' ~ prestation.imageResultats) }}"
+                alt="{{ prestation.nom }}"
             >
 
         </div>
@@ -109,89 +117,90 @@
             </span>
 
             <h2>
-
                 Les résultats de {{ prestation.nom }}
-
             </h2>
 
             <p>
-
                 {{ prestation.resultats }}
-
             </p>
 
         </div>
 
     </div>
 
-</div>
+</section>
 
 <!-- ========== BIENFAITS ========== -->
 
 <section class="bienfaits fade">
 
-    <div class="bienfaits-header">
+    <div class="container">
 
-        <span class="section-label">
-            Les bienfaits
-        </span>
+        <div class="bienfaits-header">
 
-        <h2>
+            <span class="section-label">
+                Les bienfaits
+            </span>
 
-            Pourquoi choisir {{ prestation.nom }} ?
-
-        </h2>
-
-    </div>
-
-    <div class="bienfaits-grid">
-
-    {% for bienfait in prestation.bienfaits %}
-
-        <div class="bienfait-card">
-
-            <i class="{{ bienfait.icone }}"></i>
-
-            <h3>
-                {{ bienfait.titre }}
-            </h3>
-
-            <p>
-                {{ bienfait.description }}
-            </p>
+            <h2>
+                Pourquoi choisir {{ prestation.nom }} ?
+            </h2>
 
         </div>
 
-    {% endfor %}
+        <div class="bienfaits-grid">
 
-</div>
+            {% for bienfait in prestation.bienfaits %}
+
+                <div class="bienfait-card">
+
+                    <i class="{{ bienfait.icone }}"></i>
+
+                    <h3>
+                        {{ bienfait.titre }}
+                    </h3>
+
+                    <p>
+                        {{ bienfait.description }}
+                    </p>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
 
 </section>
 
-<!-- ========== CTA ========== -->
+<!-- ========== CTA PREMIUM ========== -->
 
-<section class="cta fade">
+<section class="cta-luxe">
 
-    <h2>
+    <div class="cta-overlay"></div>
 
-        Prête à vivre l'expérience {{ prestation.nom }} ?
+    <div class="cta-content">
 
-    </h2>
+        <span class="section-label">
+            Votre moment de bien-être
+        </span>
 
-    <p>
+        <h2>
+            Prête à vivre l'expérience {{ prestation.nom }} ?
+        </h2>
 
-        Réservez votre séance dès aujourd'hui.
+        <p>
+            Réservez votre séance et laissez-vous porter par un véritable rituel de détente inspiré des traditions japonaises.
+        </p>
 
-    </p>
+        <a href="{{ path('app_reservation', { id: prestation.id }) }}"
+           class="btn">
+            Réserver maintenant
+        </a>
 
-    <a href="{{ path('app_reservation', { id: prestation.id }) }}"
-   class="btn">
-
-    Réserver un soin
-
-</a>
+    </div>
 
 </section>
 
 {% endblock %}
-

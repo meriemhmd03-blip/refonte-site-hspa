@@ -139,5 +139,6 @@ public function cancel(
     );
 
     return $this->redirectToRoute('app_mes_rendez_vous');
+    
 }
 }

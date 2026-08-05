@@ -6,44 +6,225 @@
 
 <section class="hero">
 
-    <p>Institut de soin • Villeurbanne</p>
+    <div class="hero-overlay"></div>
 
-    <h1>
-        Head Spa Lyon<br>
-        By F.
-    </h1>
+    <div class="hero-content">
 
-    <p>
-        Un art du soin inspiré de l'Asie
-    </p>
+        <span class="hero-subtitle">
+            HEAD SPA • VILLEURBANNE
+        </span>
 
-    <a href="{{ path('app_reservation_choix') }}" class="btn">
-        Réserver un soin
-    </a>
+        <h1>
+            Head Spa Lyon
+            <span>By F.</span>
+        </h1>
 
-</section>
+        <p>
+            Offrez-vous une véritable parenthèse de sérénité.
+            Inspirés des rituels japonais, nos soins vous invitent
+            à ralentir, respirer et retrouver un profond bien-être.
+        </p>
 
-<section class="bienvenue">
+        <a href="{{ path('app_reservation_choix') }}" class="hero-btn">
+            Réserver un soin
+        </a>
 
-    <span>Notre philosophie</span>
-
-    <h2>
-        Bienvenue chez<br>
-        <em>Head Spa Lyon By F.</em>
-    </h2>
-
-    <p>
-        Au croisement des traditions asiatiques et d'une approche profondément intuitive du bien-être, je vous propose des soins uniques, pensés comme de véritables voyages sensoriels.
-    </p>
-
-    <p>
-        Chaque rituel est une invitation à ralentir, à relâcher les tensions et à se reconnecter à soi, dans un cadre apaisant et enveloppant.
-    </p>
-
-    <p>
-        Mes soins s'inspirent de techniques ancestrales venues du Japon et d'Asie, enrichies par une écoute attentive du corps et de l'énergie de chaque personne.
-    </p>
+    </div>
 
 </section>
 
+<section class="philosophie">
+
+    <div class="container philosophie-grid">
+
+        <div class="philosophie-image">
+
+            <img src="{{ asset('images/philosophie.jpg') }}"
+                 alt="Head Spa Lyon">
+
+        </div>
+
+        <div class="philosophie-content">
+
+            <span class="section-label">
+                Notre philosophie
+            </span>
+
+            <h2>
+                Bienvenue chez
+                <em>Head Spa Lyon By F.</em>
+            </h2>
+
+            <p>
+                Chaque soin est pensé comme un véritable voyage sensoriel.
+                Inspirés des rituels japonais, nos protocoles associent
+                relaxation profonde, expertise et bien-être.
+            </p>
+
+            <p>
+                Notre objectif est simple : vous offrir un moment hors du
+                temps, où le corps et l'esprit retrouvent équilibre,
+                sérénité et énergie.
+            </p>
+
+            <a href="{{ path('qui') }}" class="btn">
+                Découvrir notre histoire
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="prestations-home">
+
+    <div class="container">
+
+        <span class="section-label">
+            Nos soins
+        </span>
+
+        <h2>
+            Découvrez nos expériences Head Spa
+        </h2>
+
+        <div class="prestations-grid">
+
+            {% for prestation in prestations %}
+
+                <article class="prestation-card">
+
+                    <img
+                        src="{{ asset('images/' ~ prestation.heroImage) }}"
+                        alt="{{ prestation.nom }}"
+                    >
+
+                    <div class="card-content">
+
+                        <h3>{{ prestation.nom }}</h3>
+
+                        <p>{{ prestation.duree }} minutes</p>
+
+                        <a href="{{ path('prestation_show',{
+                            slug: prestation.slug
+                        }) }}">
+                            Découvrir →
+                        </a>
+
+                    </div>
+
+                </article>
+
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="why">
+
+    <div class="container">
+
+        <span class="section-label">
+            Pourquoi nous choisir
+        </span>
+
+        <h2>
+            Une expérience pensée pour votre bien-être
+        </h2>
+
+        <div class="why-grid">
+
+            <div class="why-card">
+                <div class="why-icon">🌿</div>
+                <h3>Produits premium</h3>
+                <p>Des soins sélectionnés pour respecter le cuir chevelu et sublimer les cheveux.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">💆</div>
+                <h3>Expertise Head Spa</h3>
+                <p>Des techniques inspirées des rituels japonais pour une relaxation profonde.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">✨</div>
+                <h3>Moment hors du temps</h3>
+                <p>Une parenthèse de douceur pour ralentir, respirer et retrouver votre énergie.</p>
+            </div>
+
+            <div class="why-card">
+                <div class="why-icon">🤍</div>
+                <h3>Accompagnement personnalisé</h3>
+                <p>Chaque soin est adapté à vos besoins et à votre cuir chevelu.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="avis">
+
+    <div class="container">
+
+        <span class="section-label">
+            Elles nous font confiance
+        </span>
+
+        <h2>
+            Les avis de nos clientes
+        </h2>
+
+        <div class="avis-grid">
+
+            <div class="avis-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    Une expérience incroyable. Dès les premières minutes,
+                    je me suis sentie totalement détendue.
+                    Je recommande à 100 %.
+                </p>
+
+                <strong>— Sarah</strong>
+
+            </div>
+
+            <div class="avis-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    Le meilleur Head Spa que j'ai testé.
+                    Un moment hors du temps avec une vraie expertise.
+                </p>
+
+                <strong>— Camille</strong>
+
+            </div>
+
+            <div class="avis-card">
+
+                <div class="stars">★★★★★</div>
+
+                <p>
+                    Une atmosphère incroyable, des soins de qualité
+                    et une sensation de bien-être qui dure plusieurs jours.
+                </p>
+
+                <strong>— Inès</strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 {% endblock %}

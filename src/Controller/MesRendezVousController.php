@@ -11,17 +11,49 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class MesRendezVousController extends AbstractController
 {
-    #[Route('/mes-rendez-vous', name: 'app_mes_rendez_vous')]
-    public function index(RendezVousRepository $rendezVousRepository): Response
-    {
-        $rendezVous = $rendezVousRepository->findByUser(
-            $this->getUser()
-        );
+   #[Route('/mes-rendez-vous', name: 'app_mes_rendez_vous')]
+public function index(RendezVousRepository $rendezVousRepository): Response
+{
+    $rendezVous = $rendezVousRepository->findByUser(
+        $this->getUser()
+    );
 
-        return $this->render('mes_rendez_vous/index.html.twig', [
-            'rendezVous' => $rendezVous,
-        ]);
+    $confirmes = 0;
+    $attente = 0;
+    $annules = 0;
+    $refuses = 0;
+
+    foreach ($rendezVous as $rdv) {
+
+        switch ($rdv->getStatut()) {
+
+            case 'CONFIRME':
+                $confirmes++;
+                break;
+
+            case 'EN_ATTENTE':
+                $attente++;
+                break;
+
+            case 'ANNULE':
+                $annules++;
+                break;
+
+            case 'REFUSE':
+                $refuses++;
+                break;
+        }
     }
+
+    return $this->render('mes_rendez_vous/index.html.twig', [
+        'rendezVous' => $rendezVous,
+        'totalRdv' => count($rendezVous),
+        'confirmes' => $confirmes,
+        'attente' => $attente,
+        'annules' => $annules,
+        'refuses' => $refuses,
+    ]);
+}
     #[Route('/mes-rendez-vous/{id}/annuler', name: 'app_annuler_rendez_vous')]
 public function annuler(
     RendezVous $rendezVous,

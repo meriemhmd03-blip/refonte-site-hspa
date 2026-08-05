@@ -1,27 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réservation{% endblock %}
+{% block title %}Réserver {{ prestation.nom }}{% endblock %}
 
 {% block body %}
 
-<div class="container mt-5">
+<section class="reservation-page">
 
-    <h1>Réserver : {{ prestation.nom }}</h1>
+    <div class="container">
 
-    <p>{{ prestation.heroSousTitre }}</p>
+        <div class="reservation-header">
 
-    <hr>
+            <span class="section-label">
+                Réservation
+            </span>
 
-    {{ form_start(form) }}
+            <h1>
+                {{ prestation.nom }}
+            </h1>
 
-        {{ form_row(form.dateHeure) }}
+            <p>
+                {{ prestation.heroSousTitre }}
+            </p>
 
-        <button class="btn btn-primary">
-            Confirmer la réservation
-        </button>
+        </div>
 
-    {{ form_end(form) }}
+        <div class="reservation-box">
 
-</div>
+            <div class="reservation-info">
+
+                <h2>Votre soin</h2>
+
+                <p>
+                    Choisissez la date et l'heure qui vous conviennent.
+                    Votre demande sera ensuite confirmée par email.
+                </p>
+
+                <ul>
+
+                    <li>✨ Confirmation par email</li>
+
+                    <li>🕒 Durée : {{ prestation.duree }} min</li>
+
+                    <li>💆 Réservation simple et rapide</li>
+
+                </ul>
+
+            </div>
+
+            <div class="reservation-form">
+
+                {{ form_start(form) }}
+
+                    {{ form_row(form.dateHeure) }}
+
+                    <button class="btn reservation-btn">
+
+                        Confirmer ma réservation
+
+                    </button>
+
+                {{ form_end(form) }}
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
 
 {% endblock %}
