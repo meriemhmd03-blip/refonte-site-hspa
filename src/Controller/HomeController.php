@@ -43,22 +43,12 @@ public function show(string $slug, PrestationRepository $prestationRepository): 
     ]);
 }
    
-    #[Route('/qui', name: 'qui')]
+    #[Route('/contact', name: 'contact')]
 public function qui(PrestationRepository $prestationRepository): Response
 {
     $prestations = $prestationRepository->findAll();
 
-    return $this->render('home/qui.html.twig', [
-        'prestations' => $prestations,
-    ]);
-}
-
-    #[Route('/tarifs', name: 'tarifs')]
-public function tarifs(PrestationRepository $prestationRepository): Response
-{
-    $prestations = $prestationRepository->findAll();
-
-    return $this->render('home/tarifs.html.twig', [
+    return $this->render('home/contact.html.twig', [
         'prestations' => $prestations,
     ]);
 }

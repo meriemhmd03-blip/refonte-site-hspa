@@ -135,3 +135,13 @@
     }
 
 }
+
+@media(max-width:900px){
+
+    .reservation-box{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

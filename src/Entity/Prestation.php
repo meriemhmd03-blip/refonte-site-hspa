@@ -49,6 +49,9 @@ class Prestation
     #[ORM\Column]
     private ?int $duree = null;
 
+    #[ORM\Column]
+    private ?float $prix = null;
+
     /**
      * @var Collection<int, Bienfait>
      */
@@ -267,5 +270,15 @@ class Prestation
         return $this;
     }
     
-   
+   public function getPrix(): ?float
+{
+    return $this->prix;
+}
+
+public function setPrix(float $prix): static
+{
+    $this->prix = $prix;
+
+    return $this;
+}
 }

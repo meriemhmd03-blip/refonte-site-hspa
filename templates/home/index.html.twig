@@ -67,10 +67,6 @@
                 sérénité et énergie.
             </p>
 
-            <a href="{{ path('qui') }}" class="btn">
-                Découvrir notre histoire
-            </a>
-
         </div>
 
     </div>
@@ -106,6 +102,11 @@
 
                         <p>{{ prestation.duree }} minutes</p>
 
+                        <span>
+                            <i class="bi bi-gem"></i>
+                            {{ prestation.prix }} €
+                        </span>
+
                         <a href="{{ path('prestation_show',{
                             slug: prestation.slug
                         }) }}">
@@ -139,27 +140,59 @@
         <div class="why-grid">
 
             <div class="why-card">
-                <div class="why-icon">🌿</div>
+
+                <div class="why-icon">
+                    <i class="bi bi-flower1"></i>
+                </div>
+
                 <h3>Produits premium</h3>
-                <p>Des soins sélectionnés pour respecter le cuir chevelu et sublimer les cheveux.</p>
+
+                <p>
+                    Des soins sélectionnés pour respecter le cuir chevelu et sublimer les cheveux.
+                </p>
+
             </div>
 
             <div class="why-card">
-                <div class="why-icon">💆</div>
+
+                <div class="why-icon">
+                    <i class="bi bi-heart-pulse"></i>
+                </div>
+
                 <h3>Expertise Head Spa</h3>
-                <p>Des techniques inspirées des rituels japonais pour une relaxation profonde.</p>
+
+                <p>
+                    Des techniques inspirées des rituels japonais pour une relaxation profonde.
+                </p>
+
             </div>
 
             <div class="why-card">
-                <div class="why-icon">✨</div>
+
+                <div class="why-icon">
+                    <i class="bi bi-stars"></i>
+                </div>
+
                 <h3>Moment hors du temps</h3>
-                <p>Une parenthèse de douceur pour ralentir, respirer et retrouver votre énergie.</p>
+
+                <p>
+                    Une parenthèse de douceur pour ralentir, respirer et retrouver votre énergie.
+                </p>
+
             </div>
 
             <div class="why-card">
-                <div class="why-icon">🤍</div>
+
+                <div class="why-icon">
+                    <i class="bi bi-heart"></i>
+                </div>
+
                 <h3>Accompagnement personnalisé</h3>
-                <p>Chaque soin est adapté à vos besoins et à votre cuir chevelu.</p>
+
+                <p>
+                    Chaque soin est adapté à vos besoins et à votre cuir chevelu.
+                </p>
+
             </div>
 
         </div>
@@ -227,4 +260,44 @@
     </div>
 
 </section>
+
+<section class="final-cta fade">
+
+    <div class="final-overlay"></div>
+
+    <div class="container">
+
+        <div class="final-content">
+
+            <span class="section-label">
+                Head Spa Lyon By F.
+            </span>
+
+            <h2>
+
+                Offrez-vous un moment<br>
+                rien que pour vous.
+
+            </h2>
+
+            <p>
+
+                Chaque soin est une invitation à ralentir,
+                respirer et retrouver un profond bien-être.
+
+            </p>
+
+            <a href="{{ path('app_reservation_choix') }}"
+               class="btn">
+
+                Réserver un soin
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
 {% endblock %}

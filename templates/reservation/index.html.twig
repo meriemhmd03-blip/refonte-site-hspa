@@ -19,33 +19,46 @@
             </h1>
 
             <p>
-                {{ prestation.heroSousTitre }}
+                {{ prestation.heroSousTitre|striptags }}
             </p>
 
         </div>
 
         <div class="reservation-box">
 
-            <div class="reservation-info">
+           <div class="reservation-info">
 
-                <h2>Votre soin</h2>
+    <h2>{{ prestation.nom|striptags }}</h2>
 
-                <p>
-                    Choisissez la date et l'heure qui vous conviennent.
-                    Votre demande sera ensuite confirmée par email.
-                </p>
+    <p>
+        {{ prestation.heroSousTitre|striptags }}
+    </p>
 
-                <ul>
+    <ul>
 
-                    <li>✨ Confirmation par email</li>
+        <li>
+    <i class="bi bi-clock"></i>
+    <strong>Durée :</strong> {{ prestation.duree }} min
+</li>
 
-                    <li>🕒 Durée : {{ prestation.duree }} min</li>
+<li>
+    <i class="bi bi-gem"></i>
+    <strong>Prix :</strong> {{ prestation.prix }} €
+</li>
 
-                    <li>💆 Réservation simple et rapide</li>
+<li>
+    <i class="bi bi-envelope"></i>
+    Confirmation par email
+</li>
 
-                </ul>
+<li>
+    <i class="bi bi-stars"></i>
+    Expérience Head Spa haut de gamme
+</li>
 
-            </div>
+    </ul>
+
+</div>
 
             <div class="reservation-form">
 

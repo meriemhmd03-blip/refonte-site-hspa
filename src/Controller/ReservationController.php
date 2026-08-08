@@ -12,6 +12,8 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
 use App\Service\ReservationService;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Repository\RendezVousRepository;
 
 final class ReservationController extends AbstractController
 {
@@ -140,5 +142,32 @@ public function cancel(
 
     return $this->redirectToRoute('app_mes_rendez_vous');
     
+}
+
+#[Route('/reservation/creneaux/{date}', name: 'app_creneaux')]
+public function creneaux(
+    string $date,
+    RendezVousRepository $repository
+): JsonResponse
+{
+    $debut = new \DateTime($date . ' 00:00:00');
+    $fin = new \DateTime($date . ' 23:59:59');
+
+    $rendezVous = $repository->createQueryBuilder('r')
+        ->where('r.dateHeure BETWEEN :debut AND :fin')
+        ->andWhere('r.statut != :annule')
+        ->setParameter('debut', $debut)
+        ->setParameter('fin', $fin)
+        ->setParameter('annule', 'ANNULE')
+        ->getQuery()
+        ->getResult();
+
+    $heures = [];
+
+    foreach ($rendezVous as $rdv) {
+        $heures[] = $rdv->getDateHeure()->format('H:i');
+    }
+
+    return new JsonResponse($heures);
 }
 }

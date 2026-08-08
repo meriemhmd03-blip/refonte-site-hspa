@@ -13,22 +13,30 @@
     <div class="hero-content">
 
         <span class="hero-eyebrow">
-            {{ prestation.heroSousTitre }}
-        </span>
+    {{ prestation.heroSousTitre }}
+</span>
 
-        <h1>
-            {{ prestation.nom }}<br>
-            <em>Lyon</em>
-        </h1>
+<h1>
+    {{ prestation.nom }}<br>
+    <em>Lyon</em>
+</h1>
 
-        <p class="hero-sub">
-            {{ prestation.heroDescription }}
-        </p>
+<div class="prestation-infos">
 
-        <a href="{{ path('app_reservation', { id: prestation.id }) }}"
-           class="btn">
-            Réserver un soin
-        </a>
+    <span>⏱ {{ prestation.duree }} min</span>
+
+    <span>💎 {{ prestation.prix }} €</span>
+
+</div>
+
+<p class="hero-sub">
+    {{ prestation.heroDescription }}
+</p>
+
+<a href="{{ path('app_reservation', { id: prestation.id }) }}"
+   class="btn">
+    Réserver un soin
+</a>
 
     </div>
 
