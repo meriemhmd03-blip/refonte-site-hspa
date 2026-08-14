@@ -1,214 +1,258 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ prestation.nom }} | Head Spa Lyon By F.{% endblock %}
+{% block title %}
+    {{ prestation.nom }} | Head Spa Lyon
+{% endblock %}
 
 {% block body %}
 
-<!-- ========== HERO ========== -->
+<div class="prestation-page">
 
-<header class="hero hero-prestation">
 
-    <div class="hero-overlay"></div>
+    {# ================= HERO ================= #}
 
-    <div class="hero-content">
+    <section
+        class="hero-prestation"
+        style="background-image: url('{{ asset('images/' ~ prestation.heroImage) }}');"
+    >
 
-        <span class="hero-eyebrow">
-    {{ prestation.heroSousTitre }}
-</span>
+        <div class="hero-overlay"></div>
 
-<h1>
-    {{ prestation.nom }}<br>
-    <em>Lyon</em>
-</h1>
+        <div class="hero-content">
 
-<div class="prestation-infos">
+            <span class="hero-eyebrow">
+                {{ prestation.heroSousTitre|striptags }}
+            </span>
 
-    <span>⏱ {{ prestation.duree }} min</span>
+            <h1>
+                {{ prestation.nom|striptags }}
+            </h1>
 
-    <span>💎 {{ prestation.prix }} €</span>
+            <div class="prestation-infos">
+
+                <span>
+                    <i class="bi bi-clock"></i>
+                    {{ prestation.duree }} min
+                </span>
+
+                <span>
+                    <i class="bi bi-gem"></i>
+                    {{ prestation.prix }} €
+                </span>
+
+            </div>
+
+            <p class="hero-sub">
+                {{ prestation.introduction|striptags }}
+            </p>
+
+            <a
+                href="{{ path('app_reservation', { id: prestation.id }) }}"
+                class="btn"
+            >
+                Réserver un soin
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </section>
+
+
+    {# ================= INTRO ================= #}
+
+    <section class="intro">
+
+        <div class="container">
+
+            <span class="section-label">
+                Le soin
+            </span>
+
+            <h2>
+                Une expérience
+                <em>pensée pour vous.</em>
+            </h2>
+
+            <div class="divider"></div>
+
+            <p>
+                {{ prestation.introduction|striptags }}
+            </p>
+
+        </div>
+
+    </section>
+
+
+    {# ================= TECHNIQUE ================= #}
+
+    <section class="section-duo">
+
+        <div class="container duo-inner">
+
+            <div class="section-text">
+
+                <span class="section-label">
+                    La technique
+                </span>
+
+                <h2>
+                    Comment fonctionne
+                    <em>{{ prestation.nom|striptags }}</em> ?
+                </h2>
+
+                <div class="divider"></div>
+
+                <p>
+                    {{ prestation.technique|striptags }}
+                </p>
+
+            </div>
+
+            <div class="section-image">
+
+                <img
+                    loading="lazy"
+                    src="{{ asset('images/' ~ prestation.imageTechnique) }}"
+                    alt="{{ prestation.nom|striptags }}"
+                >
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# ================= RESULTATS ================= #}
+
+    <section class="section-duo section-duo-alt">
+
+        <div class="container duo-inner">
+
+            <div class="section-image">
+
+                <img
+                    loading="lazy"
+                    src="{{ asset('images/' ~ prestation.imageResultats) }}"
+                    alt="{{ prestation.nom|striptags }}"
+                >
+
+            </div>
+
+            <div class="section-text">
+
+                <span class="section-label">
+                    Les résultats
+                </span>
+
+                <h2>
+                    Les résultats de
+                    <em>{{ prestation.nom|striptags }}</em>
+                </h2>
+
+                <div class="divider"></div>
+
+                <p>
+                    {{ prestation.resultats|striptags }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# ================= BIENFAITS ================= #}
+
+    <section class="bienfaits">
+
+        <div class="container">
+
+            <div class="bienfaits-header">
+
+                <span class="section-label">
+                    Les bienfaits
+                </span>
+
+                <h2>
+                    Pourquoi choisir
+                    <em>{{ prestation.nom|striptags }}</em> ?
+                </h2>
+
+            </div>
+
+
+            <div class="bienfaits-grid">
+
+                {% for bienfait in prestation.bienfaits %}
+
+                    <article class="bienfait-card">
+
+                        <i class="{{ bienfait.icone }}"></i>
+
+                        <h3>
+                            {{ bienfait.titre|striptags }}
+                        </h3>
+
+                        <p>
+                            {{ bienfait.description|striptags }}
+                        </p>
+
+                    </article>
+
+                {% endfor %}
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    {# ================= CTA ================= #}
+
+    <section
+        class="cta-luxe"
+        style="background-image: url('{{ asset('images/' ~ prestation.heroImage) }}');"
+    >
+
+        <div class="cta-overlay"></div>
+
+        <div class="cta-content">
+
+            <span class="section-label">
+                Votre moment de bien-être
+            </span>
+
+            <h2>
+                Prête à vivre
+                <br>
+                l'expérience
+                <em>{{ prestation.nom|striptags }}</em> ?
+            </h2>
+
+            <p>
+                Réservez votre séance et laissez-vous porter
+                par un véritable rituel de détente inspiré
+                des traditions japonaises.
+            </p>
+
+            <a
+                href="{{ path('app_reservation', { id: prestation.id }) }}"
+                class="btn"
+            >
+                Réserver maintenant
+                <i class="bi bi-arrow-right"></i>
+            </a>
+
+        </div>
+
+    </section>
+
 
 </div>
-
-<p class="hero-sub">
-    {{ prestation.heroDescription }}
-</p>
-
-<a href="{{ path('app_reservation', { id: prestation.id }) }}"
-   class="btn">
-    Réserver un soin
-</a>
-
-    </div>
-
-</header>
-
-<!-- ========== INTRO ========== -->
-
-<section class="intro fade">
-
-    <div class="container">
-
-        <span class="section-label">
-            Le soin
-        </span>
-
-        <h2>
-            {{ prestation.nom }}
-        </h2>
-
-        <div class="divider"></div>
-
-        <p>
-            {{ prestation.introduction }}
-        </p>
-
-    </div>
-
-</section>
-
-<!-- ========== TECHNIQUE ========== -->
-
-<section class="section-duo fade">
-
-    <div class="container duo-inner">
-
-        <div class="section-text">
-
-            <span class="section-label">
-                La technique
-            </span>
-
-            <h2>
-                Comment fonctionne {{ prestation.nom }} ?
-            </h2>
-
-            <p>
-                {{ prestation.technique }}
-            </p>
-
-        </div>
-
-        <div class="section-image">
-
-            <img
-                loading="lazy"
-                src="{{ asset('images/' ~ prestation.imageTechnique) }}"
-                alt="{{ prestation.nom }}"
-            >
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ========== RESULTATS ========== -->
-
-<section class="section-duo-alt fade">
-
-    <div class="container duo-inner">
-
-        <div class="section-image">
-
-            <img
-                loading="lazy"
-                src="{{ asset('images/' ~ prestation.imageResultats) }}"
-                alt="{{ prestation.nom }}"
-            >
-
-        </div>
-
-        <div class="section-text">
-
-            <span class="section-label">
-                Les résultats
-            </span>
-
-            <h2>
-                Les résultats de {{ prestation.nom }}
-            </h2>
-
-            <p>
-                {{ prestation.resultats }}
-            </p>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ========== BIENFAITS ========== -->
-
-<section class="bienfaits fade">
-
-    <div class="container">
-
-        <div class="bienfaits-header">
-
-            <span class="section-label">
-                Les bienfaits
-            </span>
-
-            <h2>
-                Pourquoi choisir {{ prestation.nom }} ?
-            </h2>
-
-        </div>
-
-        <div class="bienfaits-grid">
-
-            {% for bienfait in prestation.bienfaits %}
-
-                <div class="bienfait-card">
-
-                    <i class="{{ bienfait.icone }}"></i>
-
-                    <h3>
-                        {{ bienfait.titre }}
-                    </h3>
-
-                    <p>
-                        {{ bienfait.description }}
-                    </p>
-
-                </div>
-
-            {% endfor %}
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ========== CTA PREMIUM ========== -->
-
-<section class="cta-luxe">
-
-    <div class="cta-overlay"></div>
-
-    <div class="cta-content">
-
-        <span class="section-label">
-            Votre moment de bien-être
-        </span>
-
-        <h2>
-            Prête à vivre l'expérience {{ prestation.nom }} ?
-        </h2>
-
-        <p>
-            Réservez votre séance et laissez-vous porter par un véritable rituel de détente inspiré des traditions japonaises.
-        </p>
-
-        <a href="{{ path('app_reservation', { id: prestation.id }) }}"
-           class="btn">
-            Réserver maintenant
-        </a>
-
-    </div>
-
-</section>
 
 {% endblock %}

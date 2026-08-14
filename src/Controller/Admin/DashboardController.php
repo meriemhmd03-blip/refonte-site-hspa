@@ -23,32 +23,31 @@ class DashboardController extends AbstractDashboardController
     }
 
     public function index(): Response
-{
-    $nombreRendezVous = $this->rendezVousRepository->countAll();
+    {
+        $nombreRendezVous = $this->rendezVousRepository->countAll();
 
-    $nombreAujourdHui = $this->rendezVousRepository->countToday();
+        $nombreAujourdHui = $this->rendezVousRepository->countToday();
 
-    $nombreEnAttente = $this->rendezVousRepository->countByStatus('EN_ATTENTE');
+        $nombreEnAttente = $this->rendezVousRepository->countByStatus('EN_ATTENTE');
 
-    $nombreConfirmes = $this->rendezVousRepository->countByStatus('CONFIRME');
+        $nombreConfirmes = $this->rendezVousRepository->countByStatus('CONFIRME');
 
-    $nombreAnnules = $this->rendezVousRepository->countByStatus('ANNULE');
+        $nombreAnnules = $this->rendezVousRepository->countByStatus('ANNULE');
 
-    $prochainsRendezVous = $this->rendezVousRepository->findNextAppointments();
+        $prochainsRendezVous = $this->rendezVousRepository->findNextAppointments();
 
-    $rendezVousAujourdHui = $this -> rendezVousRepository->findTodayAppointments();
+        $rendezVousAujourdHui = $this->rendezVousRepository->findTodayAppointments();
 
-    return $this->render('admin/dashboard.html.twig', [
-        'nombreRendezVous' => $nombreRendezVous,
-        'nombreAujourdHui' => $nombreAujourdHui,
-        'nombreEnAttente' => $nombreEnAttente,
-        'nombreConfirmes' => $nombreConfirmes,
-        'nombreAnnules' => $nombreAnnules,
-        'prochainsRendezVous' => $prochainsRendezVous,
-        'rendezVousAujourdHui' => $rendezVousAujourdHui,
-        
-    ]);
-}
+        return $this->render('admin/dashboard.html.twig', [
+            'nombreRendezVous' => $nombreRendezVous,
+            'nombreAujourdHui' => $nombreAujourdHui,
+            'nombreEnAttente' => $nombreEnAttente,
+            'nombreConfirmes' => $nombreConfirmes,
+            'nombreAnnules' => $nombreAnnules,
+            'prochainsRendezVous' => $prochainsRendezVous,
+            'rendezVousAujourdHui' => $rendezVousAujourdHui,
+        ]);
+    }
 
     public function configureDashboard(): Dashboard
     {
@@ -58,7 +57,10 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToDashboard(
+            'Dashboard',
+            'fa fa-home'
+        );
 
         yield MenuItem::linkTo(
             PrestationCrudController::class,
@@ -77,10 +79,11 @@ class DashboardController extends AbstractDashboardController
             'Rendez-vous',
             'fa fa-calendar'
         );
+
         yield MenuItem::linkToRoute(
-    'Planning',
-    'fa fa-calendar-week',
-    'app_planning'
-);
+            'Planning',
+            'fa fa-calendar-week',
+            'app_planning'
+        );
     }
 }

@@ -8,10 +8,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use App\Entity\RendezVous;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class MesRendezVousController extends AbstractController
 {
    #[Route('/mes-rendez-vous', name: 'app_mes_rendez_vous')]
+#[IsGranted('ROLE_USER')]
 public function index(RendezVousRepository $rendezVousRepository): Response
 {
     $rendezVous = $rendezVousRepository->findByUser(
@@ -21,7 +23,6 @@ public function index(RendezVousRepository $rendezVousRepository): Response
     $confirmes = 0;
     $attente = 0;
     $annules = 0;
-    $refuses = 0;
 
     foreach ($rendezVous as $rdv) {
 
@@ -39,9 +40,6 @@ public function index(RendezVousRepository $rendezVousRepository): Response
                 $annules++;
                 break;
 
-            case 'REFUSE':
-                $refuses++;
-                break;
         }
     }
 
@@ -51,10 +49,10 @@ public function index(RendezVousRepository $rendezVousRepository): Response
         'confirmes' => $confirmes,
         'attente' => $attente,
         'annules' => $annules,
-        'refuses' => $refuses,
     ]);
 }
     #[Route('/mes-rendez-vous/{id}/annuler', name: 'app_annuler_rendez_vous')]
+#[IsGranted('ROLE_USER')]
 public function annuler(
     RendezVous $rendezVous,
     EntityManagerInterface $entityManager

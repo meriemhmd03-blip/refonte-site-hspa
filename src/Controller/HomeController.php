@@ -44,7 +44,7 @@ public function show(string $slug, PrestationRepository $prestationRepository): 
 }
    
     #[Route('/contact', name: 'contact')]
-public function qui(PrestationRepository $prestationRepository): Response
+public function contact(PrestationRepository $prestationRepository): Response
 {
     $prestations = $prestationRepository->findAll();
 

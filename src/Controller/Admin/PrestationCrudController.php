@@ -24,7 +24,8 @@ class PrestationCrudController extends AbstractCrudController
         IdField::new('id')
             ->hideOnForm(),
 
-        NumberField::new('prix'),
+        NumberField::new('prix')
+    ->setLabel('Prix (€)'),
 
         TextField::new('nom'),
 

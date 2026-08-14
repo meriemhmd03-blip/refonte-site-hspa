@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script src="{{ asset('js/home.js') }}" defer></script>
+{% endblock %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Head Spa Lyon{% endblock %}
 
 {% block body %}
 
@@ -16,7 +19,6 @@
 
         <h1>
             Head Spa Lyon
-            <span>By F.</span>
         </h1>
 
         <p>
@@ -25,7 +27,10 @@
             à ralentir, respirer et retrouver un profond bien-être.
         </p>
 
-        <a href="{{ path('app_reservation_choix') }}" class="hero-btn">
+        <a
+            href="{{ path('app_reservation_choix') }}"
+            class="hero-btn"
+        >
             Réserver un soin
         </a>
 
@@ -33,14 +38,17 @@
 
 </section>
 
+
 <section class="philosophie">
 
     <div class="container philosophie-grid">
 
         <div class="philosophie-image">
 
-            <img src="{{ asset('images/philosophie.jpg') }}"
-                 alt="Head Spa Lyon">
+            <img
+                src="{{ asset('images/philosophie.jpg') }}"
+                alt="Head Spa Lyon"
+            >
 
         </div>
 
@@ -52,7 +60,7 @@
 
             <h2>
                 Bienvenue chez
-                <em>Head Spa Lyon By F.</em>
+                <em>Head Spa Lyon</em>
             </h2>
 
             <p>
@@ -73,6 +81,7 @@
 
 </section>
 
+
 <section class="prestations-home">
 
     <div class="container">
@@ -91,26 +100,42 @@
 
                 <article class="prestation-card">
 
-                    <img
-                        src="{{ asset('images/' ~ prestation.heroImage) }}"
-                        alt="{{ prestation.nom }}"
-                    >
+                    <div class="prestation-image">
+
+                        <img
+                            src="{{ asset('images/' ~ prestation.heroImage) }}"
+                            alt="{{ prestation.nom }}"
+                        >
+
+                    </div>
 
                     <div class="card-content">
 
-                        <h3>{{ prestation.nom }}</h3>
+                        <h3>
+                            {{ prestation.nom }}
+                        </h3>
 
-                        <p>{{ prestation.duree }} minutes</p>
+                        <div class="prestation-meta">
 
-                        <span>
-                            <i class="bi bi-gem"></i>
-                            {{ prestation.prix }} €
-                        </span>
+                            <span>
+                                <i class="bi bi-clock"></i>
+                                {{ prestation.duree }} min
+                            </span>
 
-                        <a href="{{ path('prestation_show',{
-                            slug: prestation.slug
-                        }) }}">
-                            Découvrir →
+                            <span>
+                                <i class="bi bi-gem"></i>
+                                {{ prestation.prix }} €
+                            </span>
+
+                        </div>
+
+                        <a
+                            href="{{ path('prestation_show', {
+                                slug: prestation.slug
+                            }) }}"
+                        >
+                            Découvrir
+                            <i class="bi bi-arrow-right"></i>
                         </a>
 
                     </div>
@@ -124,6 +149,7 @@
     </div>
 
 </section>
+
 
 <section class="why">
 
@@ -145,13 +171,17 @@
                     <i class="bi bi-flower1"></i>
                 </div>
 
-                <h3>Produits premium</h3>
+                <h3>
+                    Produits premium
+                </h3>
 
                 <p>
-                    Des soins sélectionnés pour respecter le cuir chevelu et sublimer les cheveux.
+                    Des soins sélectionnés pour respecter le cuir chevelu
+                    et sublimer les cheveux.
                 </p>
 
             </div>
+
 
             <div class="why-card">
 
@@ -159,13 +189,17 @@
                     <i class="bi bi-heart-pulse"></i>
                 </div>
 
-                <h3>Expertise Head Spa</h3>
+                <h3>
+                    Expertise Head Spa
+                </h3>
 
                 <p>
-                    Des techniques inspirées des rituels japonais pour une relaxation profonde.
+                    Des techniques inspirées des rituels japonais
+                    pour une relaxation profonde.
                 </p>
 
             </div>
+
 
             <div class="why-card">
 
@@ -173,13 +207,17 @@
                     <i class="bi bi-stars"></i>
                 </div>
 
-                <h3>Moment hors du temps</h3>
+                <h3>
+                    Moment hors du temps
+                </h3>
 
                 <p>
-                    Une parenthèse de douceur pour ralentir, respirer et retrouver votre énergie.
+                    Une parenthèse de douceur pour ralentir, respirer
+                    et retrouver votre énergie.
                 </p>
 
             </div>
+
 
             <div class="why-card">
 
@@ -187,10 +225,13 @@
                     <i class="bi bi-heart"></i>
                 </div>
 
-                <h3>Accompagnement personnalisé</h3>
+                <h3>
+                    Accompagnement personnalisé
+                </h3>
 
                 <p>
-                    Chaque soin est adapté à vos besoins et à votre cuir chevelu.
+                    Chaque soin est adapté à vos besoins
+                    et à votre cuir chevelu.
                 </p>
 
             </div>
@@ -200,6 +241,7 @@
     </div>
 
 </section>
+
 
 <section class="avis">
 
@@ -217,7 +259,9 @@
 
             <div class="avis-card">
 
-                <div class="stars">★★★★★</div>
+                <div class="stars">
+                    ★★★★★
+                </div>
 
                 <p>
                     Une expérience incroyable. Dès les premières minutes,
@@ -225,33 +269,45 @@
                     Je recommande à 100 %.
                 </p>
 
-                <strong>— Sarah</strong>
+                <strong>
+                    — Sarah
+                </strong>
 
             </div>
 
+
             <div class="avis-card">
 
-                <div class="stars">★★★★★</div>
+                <div class="stars">
+                    ★★★★★
+                </div>
 
                 <p>
                     Le meilleur Head Spa que j'ai testé.
                     Un moment hors du temps avec une vraie expertise.
                 </p>
 
-                <strong>— Camille</strong>
+                <strong>
+                    — Camille
+                </strong>
 
             </div>
 
+
             <div class="avis-card">
 
-                <div class="stars">★★★★★</div>
+                <div class="stars">
+                    ★★★★★
+                </div>
 
                 <p>
                     Une atmosphère incroyable, des soins de qualité
                     et une sensation de bien-être qui dure plusieurs jours.
                 </p>
 
-                <strong>— Inès</strong>
+                <strong>
+                    — Inès
+                </strong>
 
             </div>
 
@@ -261,7 +317,8 @@
 
 </section>
 
-<section class="final-cta fade">
+
+<section class="final-cta">
 
     <div class="final-overlay"></div>
 
@@ -270,28 +327,24 @@
         <div class="final-content">
 
             <span class="section-label">
-                Head Spa Lyon By F.
+                Head Spa Lyon
             </span>
 
             <h2>
-
                 Offrez-vous un moment<br>
                 rien que pour vous.
-
             </h2>
 
             <p>
-
                 Chaque soin est une invitation à ralentir,
                 respirer et retrouver un profond bien-être.
-
             </p>
 
-            <a href="{{ path('app_reservation_choix') }}"
-               class="btn">
-
+            <a
+                href="{{ path('app_reservation_choix') }}"
+                class="btn"
+            >
                 Réserver un soin
-
             </a>
 
         </div>

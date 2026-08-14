@@ -1,319 +1,663 @@
-/* ================= HERO PRESTATION ================= */
+/* =========================================================
+   PRESTATION — PAGE PREMIUM
+   CSS ISOLÉ POUR NE PAS CONFLITer AVEC HOME / CONTACT / BASE
+   ========================================================= */
 
-.hero-prestation{
+.prestation-page {
+    --prest-dark: #171513;
+    --prest-dark-soft: #211e1b;
+    --prest-brown: #30241b;
+    --prest-gold: #c8a977;
+    --prest-cream: #e8e1d7;
+    --prest-white: #f8f5f0;
 
-    position:relative;
-
-    height:90vh;
-
-    background:url("../images/hero.jpg") center center/cover no-repeat;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
-    overflow:hidden;
-
+    background: var(--prest-dark);
+    color: var(--prest-cream);
+    overflow: hidden;
 }
 
-.hero-prestation .hero-overlay{
 
-    position:absolute;
+/* =========================================================
+   RESET LOCAL
+   ========================================================= */
 
-    inset:0;
-
-    background:linear-gradient(
-        rgba(20,20,20,.55),
-        rgba(20,20,20,.35)
-    );
-
+.prestation-page *,
+.prestation-page *::before,
+.prestation-page *::after {
+    box-sizing: border-box;
 }
 
-.hero-prestation .hero-content{
-
-    position:relative;
-
-    z-index:2;
-
-    max-width:850px;
-
-    text-align:center;
-
-    color:white;
-
-    padding:20px;
-
+.prestation-page img {
+    display: block;
+    max-width: 100%;
 }
 
-.hero-eyebrow{
-
-    display:block;
-
-    color:#C8A977;
-
-    letter-spacing:6px;
-
-    text-transform:uppercase;
-
-    font-size:13px;
-
-    margin-bottom:25px;
-
+.prestation-page h1,
+.prestation-page h2,
+.prestation-page h3,
+.prestation-page p {
+    margin-top: 0;
 }
 
-.hero-prestation h1{
-
-    color:white;
-
-    font-size:90px;
-
-    margin-bottom:25px;
-
+.prestation-page a {
+    text-decoration: none;
 }
 
-.hero-prestation h1 em{
 
-    color:#C8A977;
+/* =========================================================
+   CONTENEUR
+   ========================================================= */
 
-    font-style:italic;
-
+.prestation-page .container {
+    width: min(1180px, calc(100% - 80px));
+    max-width: 1180px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.hero-sub{
 
-    max-width:700px;
+/* =========================================================
+   HERO
+   ========================================================= */
 
-    margin:auto;
+.prestation-page .hero-prestation {
+    position: relative;
+    min-height: calc(100vh - 112px);
+    height: 760px;
 
-    color:white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    font-size:20px;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
-    line-height:1.9;
-
-}
-/* ================= INTRO ================= */
-
-.intro{
-
-    text-align:center;
-
-    padding:140px 0;
-
+    overflow: hidden;
 }
 
-.intro .divider{
+.prestation-page .hero-overlay {
+    position: absolute;
+    inset: 0;
 
-    width:90px;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(10, 8, 7, 0.72) 0%,
+            rgba(10, 8, 7, 0.48) 42%,
+            rgba(10, 8, 7, 0.32) 100%
+        );
 
-    height:2px;
-
-    background:#C8A977;
-
-    margin:35px auto;
-
+    z-index: 1;
 }
 
-.intro p{
+.prestation-page .hero-content {
+    position: relative;
+    z-index: 2;
 
-    max-width:850px;
+    width: min(900px, calc(100% - 80px));
 
-    margin:auto;
+    margin: 0 auto;
 
+    text-align: center;
+    color: #fff;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* ================= DUO ================= */
+.prestation-page .hero-eyebrow {
+    display: block;
 
-.section-duo,
-.section-duo-alt{
+    margin-bottom: 18px;
 
-    padding:140px 0;
+    color: var(--prest-gold);
 
+    font-size: 12px;
+    font-weight: 500;
+
+    letter-spacing: 5px;
+    line-height: 1.4;
+
+    text-transform: uppercase;
 }
 
-.duo-inner{
+.prestation-page .hero-content h1 {
+    margin: 0 0 18px;
 
-    display:grid;
+    color: #fff;
 
-    grid-template-columns:1fr 1fr;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(58px, 7vw, 94px);
+    font-weight: 400;
 
-    gap:80px;
-
-    align-items:center;
-
+    line-height: 0.98;
+    letter-spacing: -2px;
 }
 
-.section-image img{
+.prestation-page .prestation-infos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    width:100%;
+    gap: 34px;
 
-    border-radius:28px;
+    margin: 0 0 28px;
 
-    box-shadow:0 25px 60px rgba(0,0,0,.12);
+    color: #fff;
 
-    transition:.5s;
-
+    font-size: 17px;
+    font-weight: 500;
 }
 
-.section-image img:hover{
-
-    transform:scale(1.03);
-
+.prestation-page .prestation-infos span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* ================= BIENFAITS ================= */
-
-.bienfaits{
-
-    background:#F8F6F2;
-
+.prestation-page .prestation-infos i {
+    color: var(--prest-gold);
+    font-size: 18px;
 }
 
-.bienfaits-header{
+.prestation-page .hero-sub {
+    width: min(760px, 100%);
 
-    text-align:center;
+    margin: 0 auto 34px;
 
-    margin-bottom:70px;
+    color: rgba(255, 255, 255, 0.88);
 
+    font-size: 17px;
+    line-height: 1.8;
 }
 
-.bienfaits-grid{
+.prestation-page .hero-content .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
 
-    display:grid;
+    min-width: 220px;
+    min-height: 58px;
 
-    grid-template-columns:repeat(3,1fr);
+    padding: 15px 28px;
 
-    gap:35px;
+    border: 0;
+    border-radius: 999px;
 
+    background: #87937f;
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
 }
 
-.bienfait-card{
-
-    background:white;
-
-    border-radius:25px;
-
-    padding:45px;
-
-    text-align:center;
-
-    box-shadow:0 15px 40px rgba(0,0,0,.08);
-
-    transition:.35s;
-
+.prestation-page .hero-content .btn:hover {
+    transform: translateY(-3px);
+    background: #96a28e;
 }
 
-.bienfait-card:hover{
 
-    transform:translateY(-10px);
+/* =========================================================
+   INTRO
+   ========================================================= */
 
+.prestation-page .intro {
+    padding: 125px 0 120px;
+
+    background: var(--prest-dark);
+
+    text-align: center;
 }
 
-.bienfait-card i{
-
-    font-size:42px;
-
-    color:#C8A977;
-
-    margin-bottom:25px;
-
-    display:block;
-
+.prestation-page .intro .container {
+    max-width: 980px;
 }
 
-.bienfait-card h3{
+.prestation-page .section-label {
+    display: block;
 
-    margin-bottom:20px;
+    margin-bottom: 18px;
 
+    color: var(--prest-gold);
+
+    font-size: 11px;
+    font-weight: 600;
+
+    letter-spacing: 5px;
+    line-height: 1.4;
+
+    text-transform: uppercase;
 }
 
-/* ================= CTA ================= */
+.prestation-page .intro h2,
+.prestation-page .section-text h2,
+.prestation-page .bienfaits-header h2 {
+    margin: 0;
 
-.cta-luxe{
+    color: var(--prest-cream);
 
-    position:relative;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 400;
 
-    background:url("../images/hero.jpg") center/cover;
-
-    padding:180px 0;
-
-    text-align:center;
-
-    overflow:hidden;
-
+    line-height: 1.05;
+    letter-spacing: -1.5px;
 }
 
-.cta-overlay{
-
-    position:absolute;
-
-    inset:0;
-
-    background:rgba(20,20,20,.55);
-
+.prestation-page em {
+    color: #cfc5b8;
+    font-style: italic;
 }
 
-.cta-content{
+.prestation-page .divider {
+    width: 65px;
+    height: 1px;
 
-    position:relative;
+    margin: 32px auto;
 
-    z-index:2;
-
-    max-width:800px;
-
-    margin:auto;
-
+    background: var(--prest-gold);
 }
 
-.cta-content h2{
+.prestation-page .intro p {
+    max-width: 850px;
 
-    color:white;
+    margin: 0 auto;
 
-    margin:25px 0;
+    color: rgba(232, 225, 215, 0.68);
 
+    font-size: 17px;
+    line-height: 1.9;
 }
 
-.cta-content p{
 
-    color:white;
+/* =========================================================
+   SECTIONS DUO
+   ========================================================= */
 
-    margin-bottom:40px;
+.prestation-page .section-duo {
+    padding: 105px 0;
 
+    background: var(--prest-dark);
 }
 
-.prestation-infos{
-
-    display:flex;
-
-    justify-content:center;
-
-    gap:40px;
-
-    margin:30px 0;
-
-    color:white;
-
-    font-size:18px;
-
-    font-weight:500;
-
+.prestation-page .section-duo-alt {
+    background: #1b1816;
 }
 
-@media(max-width:900px){
+.prestation-page .duo-inner {
+    display: grid;
 
-    .section-duo,
-    .duo-inner{
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
-        grid-template-columns:1fr;
+    gap: 90px;
 
+    align-items: center;
+}
+
+.prestation-page .section-text {
+    min-width: 0;
+}
+
+.prestation-page .section-text .divider {
+    margin: 28px 0;
+}
+
+.prestation-page .section-text p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color: rgba(232, 225, 215, 0.65);
+
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.prestation-page .section-image {
+    position: relative;
+
+    width: 100%;
+
+    overflow: hidden;
+
+    border-radius: 3px;
+}
+
+.prestation-page .section-image img {
+    width: 100%;
+    height: 500px;
+
+    object-fit: cover;
+
+    transition: transform 0.7s ease;
+}
+
+.prestation-page .section-image:hover img {
+    transform: scale(1.025);
+}
+
+
+/* =========================================================
+   BIENFAITS
+   ========================================================= */
+
+.prestation-page .bienfaits {
+    padding: 125px 0 135px;
+
+    background: var(--prest-dark-soft);
+}
+
+.prestation-page .bienfaits-header {
+    max-width: 900px;
+
+    margin: 0 auto 65px;
+
+    text-align: center;
+}
+
+.prestation-page .bienfaits-header h2 {
+    font-size: clamp(42px, 5vw, 64px);
+}
+
+.prestation-page .bienfaits-header .section-label {
+    margin-bottom: 20px;
+}
+
+.prestation-page .bienfaits-grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 22px;
+}
+
+.prestation-page .bienfait-card {
+    min-height: 285px;
+
+    padding: 42px 32px;
+
+    border: 1px solid rgba(200, 169, 119, 0.14);
+    border-radius: 4px;
+
+    background: #24201d;
+
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    transition:
+        transform 0.35s ease,
+        border-color 0.35s ease,
+        background 0.35s ease;
+}
+
+.prestation-page .bienfait-card:hover {
+    transform: translateY(-6px);
+
+    border-color: rgba(200, 169, 119, 0.35);
+
+    background: #292521;
+}
+
+.prestation-page .bienfait-card i {
+    display: block;
+
+    margin-bottom: 25px;
+
+    color: var(--prest-gold);
+
+    font-size: 30px;
+}
+
+.prestation-page .bienfait-card h3 {
+    margin: 0 0 15px;
+
+    color: var(--prest-cream);
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.prestation-page .bienfait-card p {
+    max-width: 260px;
+
+    margin: 0;
+
+    color: rgba(232, 225, 215, 0.6);
+
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.prestation-page .cta-luxe {
+    position: relative;
+
+    min-height: 600px;
+
+    padding: 120px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    text-align: center;
+
+    overflow: hidden;
+}
+
+.prestation-page .cta-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(15, 11, 8, 0.68);
+
+    z-index: 1;
+}
+
+.prestation-page .cta-content {
+    position: relative;
+    z-index: 2;
+
+    width: min(850px, 100%);
+
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.prestation-page .cta-content .section-label {
+    margin-bottom: 20px;
+}
+
+.prestation-page .cta-content h2 {
+    max-width: 850px;
+
+    margin: 0 0 28px;
+
+    color: #fff;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(45px, 5vw, 72px);
+    font-weight: 400;
+
+    line-height: 1.08;
+    letter-spacing: -1px;
+}
+
+.prestation-page .cta-content h2 em {
+    color: #d5c8b8;
+}
+
+.prestation-page .cta-content p {
+    max-width: 650px;
+
+    margin: 0 0 36px;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+.prestation-page .cta-content .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-width: 230px;
+    min-height: 58px;
+
+    padding: 15px 30px;
+
+    border-radius: 999px;
+
+    background: #87937f;
+    color: #fff;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+.prestation-page .cta-content .btn:hover {
+    transform: translateY(-3px);
+    background: #96a28e;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .prestation-page .container {
+        width: min(100% - 40px, 680px);
     }
 
-    .bienfaits-grid{
+    .prestation-page .hero-prestation {
+        min-height: 720px;
+        height: auto;
 
-        grid-template-columns:1fr;
-
+        padding: 100px 0;
     }
 
+    .prestation-page .hero-content {
+        width: min(100% - 40px, 680px);
+    }
+
+    .prestation-page .hero-content h1 {
+        font-size: 64px;
+    }
+
+    .prestation-page .duo-inner {
+        grid-template-columns: 1fr;
+
+        gap: 50px;
+    }
+
+    .prestation-page .section-duo {
+        padding: 80px 0;
+    }
+
+    .prestation-page .section-image img {
+        height: 420px;
+    }
+
+    .prestation-page .bienfaits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .prestation-page .bienfait-card {
+        min-height: 240px;
+    }
+
+    .prestation-page .cta-luxe {
+        min-height: 540px;
+        padding: 90px 20px;
+    }
+}
+
+
+@media (max-width: 600px) {
+
+    .prestation-page .container {
+        width: calc(100% - 30px);
+    }
+
+    .prestation-page .hero-prestation {
+        min-height: 650px;
+    }
+
+    .prestation-page .hero-content {
+        width: calc(100% - 30px);
+    }
+
+    .prestation-page .hero-content h1 {
+        font-size: 52px;
+        letter-spacing: -1px;
+    }
+
+    .prestation-page .hero-eyebrow {
+        font-size: 10px;
+        letter-spacing: 3px;
+    }
+
+    .prestation-page .prestation-infos {
+        gap: 20px;
+        font-size: 15px;
+    }
+
+    .prestation-page .hero-sub {
+        font-size: 15px;
+        line-height: 1.7;
+    }
+
+    .prestation-page .intro {
+        padding: 85px 0;
+    }
+
+    .prestation-page .intro h2,
+    .prestation-page .section-text h2,
+    .prestation-page .bienfaits-header h2 {
+        font-size: 42px;
+    }
+
+    .prestation-page .section-image img {
+        height: 330px;
+    }
+
+    .prestation-page .bienfaits {
+        padding: 85px 0;
+    }
+
+    .prestation-page .cta-content h2 {
+        font-size: 43px;
+    }
 }

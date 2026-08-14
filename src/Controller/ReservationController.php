@@ -117,34 +117,9 @@ public function choix(
         ]);
     }
 
-    #[Route('/reservation/{id}/annuler', name: 'app_reservation_cancel')]
-#[IsGranted('ROLE_USER')]
-public function cancel(
-    RendezVous $rendezVous,
-    EntityManagerInterface $entityManager
-): Response
-{
-    /** @var \App\Entity\User $user */
-    $user = $this->getUser();
-
-    if ($rendezVous->getUser() !== $user) {
-        throw $this->createAccessDeniedException();
-    }
-
-    $rendezVous->setStatut('ANNULE');
-
-    $entityManager->flush();
-
-    $this->addFlash(
-        'success',
-        'Votre rendez-vous a été annulé.'
-    );
-
-    return $this->redirectToRoute('app_mes_rendez_vous');
-    
-}
 
 #[Route('/reservation/creneaux/{date}', name: 'app_creneaux')]
+#[IsGranted('ROLE_USER')]
 public function creneaux(
     string $date,
     RendezVousRepository $repository
