@@ -1,43 +1,108 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Réserver un soin{% endblock %}
+{% block title %}Réserver un soin | Head Spa Lyon By F.{% endblock %}
 
 {% block body %}
 
-<div class="container mt-5">
+<div class="booking-page">
 
-    <h1 class="text-center mb-5">
-        🌿 Choisissez votre soin
-    </h1>
+    <div class="booking-intro">
 
-    <div class="row">
+        <div class="booking-intro-content">
+
+            <span class="section-label">
+                Votre moment de bien-être
+            </span>
+
+            <h1>
+                Choisissez votre
+                <em>rituel.</em>
+            </h1>
+
+            <p>
+                Chaque soin a été imaginé comme une véritable parenthèse
+                de détente. Choisissez celui qui vous correspond
+                et laissez-nous prendre soin de vous.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <div class="booking-list">
 
         {% for prestation in prestations %}
 
-            <div class="col-md-4 mb-4">
+            <article class="booking-item">
 
-                <div class="card h-100">
+                <div class="booking-item-image">
 
-                    <div class="card-body text-center">
+                    {% if prestation.heroImage %}
 
-                        <h3>{{ prestation.nom }}</h3>
+                        <img
+                            src="{{ asset('images/' ~ prestation.heroImage) }}"
+                            alt="{{ prestation.nom }}"
+                            loading="lazy"
+                        >
 
-                        <p>Durée : {{ prestation.duree }} min</p>
-
-                        <a href="{{ path('app_reservation', { id: prestation.id }) }}"
-                           class="btn btn-success">
-
-                            Choisir ce soin
-
-                        </a>
-
-                    </div>
+                    {% endif %}
 
                 </div>
 
-            </div>
+
+                <div class="booking-item-content">
+
+                    <span class="booking-item-label">
+                        Soin & bien-être
+                    </span>
+
+                    <h2>
+                        {{ prestation.nom }}
+                    </h2>
+
+                    <div class="booking-item-line"></div>
+
+                    <div class="booking-item-meta">
+
+                        <span>
+                            <i class="bi bi-clock"></i>
+                            {{ prestation.duree }} min
+                        </span>
+
+                        <span>
+                            {{ prestation.prix }} €
+                        </span>
+
+                    </div>
+
+                    <a
+                        href="{{ path('app_reservation', { id: prestation.id }) }}"
+                        class="booking-item-button"
+                    >
+                        Réserver
+
+                        <i class="bi bi-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </article>
 
         {% endfor %}
+
+    </div>
+
+
+    <div class="booking-signature">
+
+        <span></span>
+
+        <p>
+            Head Spa Lyon 
+        </p>
+
+        <span></span>
 
     </div>
 

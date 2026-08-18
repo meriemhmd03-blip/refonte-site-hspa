@@ -1,147 +1,506 @@
 /* ================= RESERVATION ================= */
 
 .reservation-page{
-
     padding:140px 0;
-
     background:#F9F7F3;
-
 }
 
 .reservation-header{
-
     text-align:center;
-
     margin-bottom:80px;
-
 }
 
 .reservation-header h1{
-
     margin:20px 0;
-
 }
 
 .reservation-header p{
-
     max-width:700px;
-
     margin:auto;
-
 }
 
 .reservation-box{
-
     display:grid;
-
     grid-template-columns:1fr 1fr;
-
     gap:60px;
-
     background:white;
-
     border-radius:30px;
-
     overflow:hidden;
-
     box-shadow:0 20px 50px rgba(0,0,0,.08);
-
 }
 
 .reservation-info{
-
     padding:60px;
-
     background:#EFE8DD;
-
 }
 
 .reservation-info h2{
-
     margin-bottom:30px;
-
 }
 
 .reservation-info p{
-
     margin-bottom:35px;
-
 }
 
 .reservation-info ul{
-
     list-style:none;
-
     padding:0;
-
 }
 
 .reservation-info li{
-
     margin-bottom:18px;
-
     font-size:17px;
-
 }
 
 .reservation-form{
-
     padding:60px;
-
 }
 
 .reservation-form label{
-
     display:block;
-
     margin-bottom:10px;
-
     font-weight:600;
-
 }
 
 .reservation-form input{
-
     width:100%;
-
     padding:18px;
-
     border:1px solid #DDD;
-
     border-radius:12px;
-
     margin-bottom:30px;
-
     font-size:16px;
-
 }
 
 .reservation-btn{
-
     width:100%;
-
     padding:20px;
-
     font-size:16px;
-
 }
 
 @media(max-width:900px){
 
     .reservation-box{
-
         grid-template-columns:1fr;
-
     }
 
 }
 
+
+/* =========================================
+   CHOIX DU SOIN — LUXURY
+========================================= */
+
+.booking-page{
+    background:#F9F7F3;
+
+    /* IMPORTANT :
+       pas de min-height forcé sur la page */
+    min-height:auto;
+}
+
+
+/* =========================================
+   INTRODUCTION
+========================================= */
+
+.booking-intro{
+    background:#232323;
+    color:white;
+
+    padding:130px 20px 120px;
+
+    position:relative;
+    overflow:hidden;
+}
+
+.booking-intro::after{
+    content:"";
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    border:1px solid rgba(200,169,119,.12);
+
+    border-radius:50%;
+
+    right:-350px;
+    top:-300px;
+}
+
+.booking-intro-content{
+    width:min(850px,90%);
+    margin:auto;
+
+    text-align:center;
+
+    position:relative;
+    z-index:2;
+}
+
+.booking-intro .section-label{
+    color:var(--gold);
+    margin-bottom:25px;
+}
+
+.booking-intro h1{
+    color:white;
+
+    font-size:78px;
+    line-height:.95;
+
+    margin-bottom:30px;
+}
+
+.booking-intro h1 em{
+    color:var(--gold);
+    font-style:italic;
+}
+
+.booking-intro p{
+    max-width:650px;
+
+    margin:auto;
+
+    color:rgba(255,255,255,.65);
+
+    font-size:16px;
+    line-height:1.9;
+}
+
+
+/* =========================================
+   LISTE DES SOINS
+========================================= */
+
+.booking-list{
+    width:min(1100px,90%);
+
+    margin:100px auto;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:70px;
+}
+
+
+/* =========================================
+   CARTE
+========================================= */
+
+.booking-item{
+    display:grid;
+
+    grid-template-columns:46% 54%;
+
+    min-height:470px;
+
+    background:white;
+
+    box-shadow:
+        0 25px 60px rgba(35,35,35,.08);
+
+    overflow:hidden;
+
+    transition:.4s;
+}
+
+.booking-item:hover{
+    transform:translateY(-6px);
+
+    box-shadow:
+        0 35px 80px rgba(35,35,35,.13);
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.booking-item-image{
+    position:relative;
+
+    overflow:hidden;
+
+    min-height:470px;
+}
+
+.booking-item-image::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent 65%,
+            rgba(35,35,35,.08)
+        );
+}
+
+.booking-item-image img{
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    display:block;
+
+    transition:transform .8s ease;
+}
+
+.booking-item:hover .booking-item-image img{
+    transform:scale(1.04);
+}
+
+
+/* =========================================
+   CONTENU
+========================================= */
+
+.booking-item-content{
+    padding:65px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+}
+
+.booking-item-label{
+    color:var(--gold);
+
+    font-size:11px;
+    font-weight:600;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    margin-bottom:20px;
+}
+
+.booking-item h2{
+    color:#2B2B2B;
+
+    font-size:54px;
+    line-height:1;
+
+    font-weight:300;
+
+    margin-bottom:28px;
+}
+
+.booking-item-line{
+    width:55px;
+    height:1px;
+
+    background:var(--gold);
+
+    margin-bottom:28px;
+}
+
+
+/* =========================================
+   INFOS
+========================================= */
+
+.booking-item-meta{
+    display:flex;
+
+    align-items:center;
+
+    gap:30px;
+
+    margin-bottom:35px;
+
+    color:#6F6A64;
+
+    font-size:14px;
+}
+
+.booking-item-meta span:first-child i{
+    color:var(--gold);
+
+    margin-right:7px;
+}
+
+.booking-item-meta span:last-child{
+    color:#9A7948;
+
+    font-weight:600;
+}
+
+
+/* =========================================
+   BOUTON
+========================================= */
+
+.booking-item-button{
+    align-self:flex-start;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding-bottom:8px;
+
+    border-bottom:1px solid var(--gold);
+
+    color:#2B2B2B;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    transition:.3s;
+}
+
+.booking-item-button i{
+    color:var(--gold);
+
+    transition:.3s;
+}
+
+.booking-item-button:hover{
+    color:var(--gold);
+}
+
+.booking-item-button:hover i{
+    transform:translateX(5px);
+}
+
+
+/* =========================================
+   SIGNATURE
+========================================= */
+
+.booking-signature{
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:25px;
+
+    padding-bottom:100px;
+}
+
+.booking-signature span{
+    width:80px;
+    height:1px;
+
+    background:#D9D0C2;
+}
+
+.booking-signature p{
+    margin:0;
+
+    color:#9A938B;
+
+    font-family:var(--font-title);
+
+    font-size:18px;
+}
+
+.booking-signature em{
+    color:var(--gold);
+
+    font-style:italic;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+/*
+   NE PAS CACHER LE FOOTER ICI.
+
+   Le footer est maintenant géré par style.css :
+   body = flex
+   footer = margin-top:auto
+*/
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
 @media(max-width:900px){
 
-    .reservation-box{
+    .booking-intro{
+        padding:100px 20px;
+    }
 
+    .booking-intro h1{
+        font-size:60px;
+    }
+
+    .booking-list{
+        width:92%;
+
+        margin:70px auto;
+
+        gap:45px;
+    }
+
+    .booking-item{
         grid-template-columns:1fr;
+    }
 
+    .booking-item-image{
+        min-height:350px;
+        height:350px;
+    }
+
+    .booking-item-content{
+        padding:50px 40px;
+    }
+
+}
+
+
+@media(max-width:600px){
+
+    .booking-intro{
+        padding:80px 20px;
+    }
+
+    .booking-intro h1{
+        font-size:48px;
+    }
+
+    .booking-intro p{
+        font-size:14px;
+    }
+
+    .booking-item-image{
+        min-height:280px;
+        height:280px;
+    }
+
+    .booking-item-content{
+        padding:40px 28px;
+    }
+
+    .booking-item h2{
+        font-size:42px;
+    }
+
+    .booking-item-meta{
+        gap:20px;
     }
 
 }

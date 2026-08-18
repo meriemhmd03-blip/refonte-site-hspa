@@ -1,88 +1,152 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion{% endblock %}
+{% block title %}Connexion | Head Spa Lyon By F.{% endblock %}
 
 {% block body %}
 
-<div class="container mt-5" style="max-width: 600px;">
+<div class="login-page">
 
-    <h1 class="text-center mb-4">
-        <i class="bi bi-person-circle"></i> Connexion
-    </h1>
+    <div class="login-container">
 
-    <p class="text-center mb-4">
-        Connectez-vous pour accéder à votre espace client.
-    </p>
+        <div class="login-header">
 
-    <form method="post">
+            <span class="section-label">
+                Votre espace bien-être
+            </span>
 
-        {% if error %}
-            <div class="alert alert-danger">
-                Email ou mot de passe incorrect.
+            <h1>
+                Bienvenue
+                <em>chez vous.</em>
+            </h1>
+
+            <p>
+                Connectez-vous pour retrouver votre espace client
+                et gérer vos rendez-vous en toute simplicité.
+            </p>
+
+        </div>
+
+
+        <div class="login-card">
+
+            {% if error %}
+
+                <div class="login-error">
+                    <i class="bi bi-exclamation-circle"></i>
+                    <span>
+                        Email ou mot de passe incorrect.
+                    </span>
+                </div>
+
+            {% endif %}
+
+
+            {% if app.user %}
+
+                <div class="login-success">
+                    Vous êtes connecté en tant que
+                    <strong>{{ app.user.userIdentifier }}</strong>.
+                </div>
+
+            {% endif %}
+
+
+            <form method="post">
+
+                <div class="login-field">
+
+                    <label for="username">
+                        Adresse email
+                    </label>
+
+                    <div class="login-input">
+
+                        <i class="bi bi-envelope"></i>
+
+                        <input
+                            type="email"
+                            value="{{ last_username }}"
+                            name="_username"
+                            id="username"
+                            autocomplete="email"
+                            required
+                            autofocus
+                            placeholder="votre@email.com"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="login-field">
+
+                    <label for="password">
+                        Mot de passe
+                    </label>
+
+                    <div class="login-input">
+
+                        <i class="bi bi-lock"></i>
+
+                        <input
+                            type="password"
+                            name="_password"
+                            id="password"
+                            autocomplete="current-password"
+                            required
+                            placeholder="Votre mot de passe"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <input
+                    type="hidden"
+                    name="_csrf_token"
+                    value="{{ csrf_token('authenticate') }}"
+                >
+
+
+                <button
+                    class="login-button"
+                    type="submit"
+                >
+                    Se connecter
+                    <i class="bi bi-arrow-right"></i>
+                </button>
+
+            </form>
+
+
+            <div class="login-register">
+
+                <span>
+                    Vous n'avez pas encore de compte ?
+                </span>
+
+                <a href="{{ path('app_register') }}">
+                    Créer un compte
+                </a>
+
             </div>
-        {% endif %}
 
-        {% if app.user %}
-            <div class="alert alert-success">
-                Vous êtes connecté en tant que
-                <strong>{{ app.user.userIdentifier }}</strong>.
-            </div>
-        {% endif %}
-
-        <div class="mb-3">
-            <label for="username" class="form-label">
-                Adresse email
-            </label>
-
-            <input
-                type="email"
-                value="{{ last_username }}"
-                name="_username"
-                id="username"
-                class="form-control"
-                autocomplete="email"
-                required
-                autofocus
-            >
         </div>
 
-        <div class="mb-3">
-            <label for="password" class="form-label">
-                Mot de passe
-            </label>
 
-            <input
-                type="password"
-                name="_password"
-                id="password"
-                class="form-control"
-                autocomplete="current-password"
-                required
-            >
+        <div class="login-bottom">
+
+            <span></span>
+
+            <i class="bi bi-star"></i>
+
+            <span></span>
+
         </div>
 
-        <input
-            type="hidden"
-            name="_csrf_token"
-            value="{{ csrf_token('authenticate') }}"
-        >
-
-        <div class="d-grid mt-4">
-            <button class="btn btn-success" type="submit">
-                Se connecter
-            </button>
-        </div>
-
-    </form>
-
-    <hr class="my-4">
-
-    <p class="text-center">
-        Vous n'avez pas encore de compte ?
-        <a href="{{ path('app_register') }}">
-            Créer un compte
-        </a>
-    </p>
+    </div>
 
 </div>
 

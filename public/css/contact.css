@@ -1,113 +1,431 @@
-.contact-page{
+/* =========================================================
+   CONTACT — PREMIUM / BEIGE / NOIR / OR
+========================================================= */
 
-    padding:140px 0;
-
-    background:#F9F7F3;
-
+.contact-page {
+    padding: 110px 0 100px;
+    background: #F9F7F3;
+    color: #2B2B2B;
+    position: relative;
+    overflow: hidden;
 }
 
-.contact-header{
 
-    text-align:center;
+/* Décoration très discrète */
 
-    margin-bottom:80px;
+.contact-page::before {
+    content: "";
 
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    top: -250px;
+    right: -180px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(200,169,119,.12);
+
+    background: rgba(200,169,119,.03);
+
+    pointer-events: none;
 }
 
-.contact-header h1{
 
-    margin:20px 0;
+/* =========================================================
+   HEADER
+========================================================= */
 
+.contact-header {
+    max-width: 800px;
+
+    margin: 0 auto 60px;
+
+    text-align: center;
+
+    position: relative;
+    z-index: 2;
 }
 
-.contact-header p{
+.contact-header .section-label {
+    display: inline-block;
 
-    max-width:700px;
+    margin-bottom: 15px;
 
-    margin:auto;
-
+    color: var(--gold);
 }
 
-.contact-grid{
+.contact-header h1 {
+    margin: 0 0 20px;
 
-    display:grid;
+    color: #403A36;
 
-    grid-template-columns:420px 1fr;
+    font-family: var(--font-title);
 
-    gap:60px;
+    font-size: 64px;
 
-    align-items:start;
+    font-weight: 300;
 
+    line-height: 1;
+
+    letter-spacing: -1.5px;
 }
 
-.contact-info{
+.contact-header h1 em {
+    color: var(--gold);
 
-    background:white;
-
-    border-radius:25px;
-
-    padding:45px;
-
-    box-shadow:0 20px 40px rgba(0,0,0,.08);
-
+    font-style: italic;
 }
 
-.info-item{
+.contact-header p {
+    max-width: 620px;
 
-    margin-bottom:35px;
+    margin: auto;
 
+    color: #666;
+
+    font-size: 16px;
+
+    line-height: 1.8;
 }
 
-.info-item:last-child{
 
-    margin-bottom:0;
+/* =========================================================
+   GRILLE
+========================================================= */
 
+.contact-grid {
+
+    width: 94%;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+    display: grid;
+
+    grid-template-columns: 320px minmax(0, 1fr);
+
+    gap: 28px;
+
+    align-items: start;
+
+    position: relative;
+
+    z-index: 2;
 }
 
-.info-item h3{
 
-    margin-bottom:10px;
+/* =========================================================
+   BLOC INFORMATIONS
+========================================================= */
 
-    color:var(--gold);
+.contact-info {
 
+    position: relative;
+
+    background: #FFFFFF;
+
+    padding: 32px 28px;
+
+    border-radius: 4px;
+
+    color: #2B2B2B;
+
+    border: 1px solid rgba(43,43,43,.06);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.08);
+
+    overflow: hidden;
+
+    align-self: start;
 }
 
-.contact-map iframe{
 
-    width:100%;
+/* Ligne dorée */
 
-    height:600px;
+.contact-info::before {
 
-    border:0;
+    content: "";
 
-    border-radius:25px;
+    position: absolute;
 
-    box-shadow:0 20px 40px rgba(0,0,0,.08);
+    top: 0;
 
+    left: 28px;
+
+    width: 60px;
+
+    height: 2px;
+
+    background: var(--gold);
 }
 
-@media(max-width:900px){
 
-    .contact-grid{
+/* =========================================================
+   INFORMATIONS
+========================================================= */
 
-        grid-template-columns:1fr;
+.info-item {
 
+    padding: 13px 0;
+
+    margin: 0;
+
+    border-bottom: 1px solid rgba(43,43,43,.09);
+}
+
+.info-item:first-child {
+    padding-top: 4px;
+}
+
+.info-item:last-child {
+
+    border-bottom: none;
+
+    padding-bottom: 0;
+}
+
+
+.info-item h3 {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin: 0 0 5px;
+
+    color: #9F7F45;
+
+    font-family: var(--font-title);
+
+    font-size: 23px;
+
+    font-weight: 400;
+
+    line-height: 1.2;
+}
+
+
+.info-item h3 i {
+
+    color: var(--gold);
+
+    font-size: 16px;
+
+    flex-shrink: 0;
+}
+
+
+.info-item p {
+
+    margin: 0;
+
+    color: #555;
+
+    font-size: 14px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   CARTE
+========================================================= */
+
+.contact-map {
+
+    position: relative;
+
+    background: #202020;
+
+    padding: 14px;
+
+    border-radius: 4px;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.12);
+
+    overflow: hidden;
+}
+
+
+/* Ligne dorée */
+
+.contact-map::before {
+
+    content: "";
+
+    display: block;
+
+    width: 55px;
+
+    height: 2px;
+
+    margin: 0 0 12px 4px;
+
+    background: var(--gold);
+}
+
+
+/* Google Maps */
+
+.contact-map iframe {
+
+    display: block;
+
+    width: 100%;
+
+    height: 350px;
+
+    border: 0;
+
+    border-radius: 2px;
+
+    filter: grayscale(10%);
+}
+
+
+/* =========================================================
+   PETIT EFFET PREMIUM
+========================================================= */
+
+.contact-info,
+.contact-map {
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+}
+
+.contact-info:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 28px 55px rgba(0,0,0,.12);
+}
+
+.contact-map:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow:
+        0 28px 55px rgba(0,0,0,.16);
+}
+
+
+/* =========================================================
+   TABLETTE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+    .contact-header h1 {
+        font-size: 56px;
     }
 
+    .contact-grid {
+
+        width: 90%;
+
+        grid-template-columns: 300px minmax(0, 1fr);
+
+        gap: 22px;
+    }
+
+    .contact-info {
+        padding: 30px 25px;
+    }
+
+    .contact-map iframe {
+        height: 340px;
+    }
 }
 
-@media(max-width:900px){
 
-    .contact-grid{
+/* =========================================================
+   MOBILE
+========================================================= */
 
-        grid-template-columns:1fr;
+@media (max-width: 800px) {
 
+    .contact-page {
+        padding: 90px 0 80px;
     }
 
-    .contact-map iframe{
-
-        height:400px;
-
+    .contact-header {
+        margin-bottom: 45px;
     }
 
+    .contact-header h1 {
+        font-size: 48px;
+    }
+
+    .contact-grid {
+
+        width: 90%;
+
+        grid-template-columns: 1fr;
+
+        gap: 25px;
+    }
+
+    .contact-info {
+        padding: 32px 28px;
+    }
+
+    .contact-map {
+        padding: 12px;
+    }
+
+    .contact-map iframe {
+        height: 330px;
+    }
+}
+
+
+/* =========================================================
+   PETIT MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .contact-page {
+        padding: 75px 0 70px;
+    }
+
+    .contact-header h1 {
+        font-size: 42px;
+        letter-spacing: -1px;
+    }
+
+    .contact-header p {
+        font-size: 15px;
+    }
+
+    .contact-grid {
+        width: 92%;
+    }
+
+    .contact-info {
+        padding: 28px 24px;
+    }
+
+    .info-item h3 {
+        font-size: 22px;
+    }
+
+    .contact-map {
+        padding: 10px;
+    }
+
+    .contact-map iframe {
+        height: 280px;
+    }
 }
